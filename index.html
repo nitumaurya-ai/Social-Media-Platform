@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SocialSphere - Next-Gen Social Experience</title>
+    <title>SocialSphere - Professional Social Matrix</title>
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -13,77 +14,77 @@
                 extend: {
                     colors: {
                         brand: {
-                            dark: '#030712',
+                            dark: '#090d16',
                             card: 'rgba(17, 24, 39, 0.7)',
-                            accent: '#8B5CF6',
-                            neonPink: '#EC4899',
-                            neonCyan: '#06B6D4',
-                            neonGreen: '#10B981',
-                            border: 'rgba(139, 92, 246, 0.15)'
+                            accent: '#7C3AED',
+                            neonPink: '#DB2777',
+                            neonCyan: '#0891B2',
+                            neonGreen: '#059669',
+                            border: 'rgba(124, 58, 237, 0.12)'
                         }
                     },
                     fontFamily: {
-                        sans: ['Outfit', 'Inter', 'sans-serif'],
+                        sans: ['Inter', 'Outfit', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <!-- GSAP (GreenSock Animation Platform) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- CSS Custom Styling for Glassmorphism & Custom scrollbars -->
+    
     <style>
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #030712;
+            font-family: 'Inter', sans-serif;
+            background-color: #090d16;
             color: #f3f4f6;
             overflow-x: hidden;
         }
-        /* Custom Premium Scrollbar */
+        /* Premium Custom Scrollbars */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
         }
         ::-webkit-scrollbar-track {
-            background: #030712;
+            background: #090d16;
         }
         ::-webkit-scrollbar-thumb {
-            background: #3730a3;
+            background: #1e1b4b;
             border-radius: 99px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: #8b5cf6;
+            background: #7c3aed;
         }
-        /* Glassmorphism Classes */
+        /* Professional Glassmorphism Styles */
         .glass {
-            background: rgba(15, 23, 42, 0.45);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(13, 18, 30, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         .glass-premium {
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(6, 182, 212, 0.05) 100%);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(139, 92, 246, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.08) 0%, rgba(8, 145, 178, 0.03) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
         }
         .neon-glow-violet {
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.35);
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.25);
         }
-        .neon-glow-pink {
-            box-shadow: 0 0 20px rgba(236, 72, 153, 0.35);
-        }
-        /* Hide Scrollbar for Reels/Stories container */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -91,21 +92,20 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
-        /* Particle & Animated Backgrounds */
-        @keyframes float {
+        /* Slow Background Floating Shapes */
+        @keyframes subtleFloat {
             0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(180deg); }
-            100% { transform: translateY(0px) rotate(360deg); }
+            50% { transform: translateY(-10px) rotate(90deg); }
+            100% { transform: translateY(0px) rotate(180deg); }
         }
-        .bubble-1 { animation: float 14s ease-in-out infinite; }
-        .bubble-2 { animation: float 18s ease-in-out infinite; animation-delay: 2s; }
-        .bubble-3 { animation: float 22s ease-in-out infinite; animation-delay: 5s; }
+        .bubble-1 { animation: subtleFloat 20s ease-in-out infinite; }
+        .bubble-2 { animation: subtleFloat 25s ease-in-out infinite; animation-delay: 3s; }
+        .bubble-3 { animation: subtleFloat 30s ease-in-out infinite; animation-delay: 6s; }
         
-        /* Shimmer Loading Animations */
         .skeleton {
-            background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
+            background: linear-gradient(90deg, #111827 25%, #1f2937 50%, #111827 75%);
             background-size: 200% 100%;
-            animation: loading 1.5s infinite;
+            animation: loading 1.6s infinite;
         }
         @keyframes loading {
             0% { background-position: 200% 0; }
@@ -115,247 +115,213 @@
 </head>
 <body class="antialiased min-h-screen text-slate-100 selection:bg-purple-600 selection:text-white">
 
-    <!-- SPLASH SCREEN / LOADER -->
-    <div id="splash-screen" class="fixed inset-0 z-[9999] bg-brand-dark flex flex-col justify-center items-center">
-        <!-- Floating shapes background inside splash -->
-        <div class="absolute w-72 h-72 bg-purple-600 rounded-full filter blur-[120px] opacity-20 -top-20 -left-20"></div>
-        <div class="absolute w-72 h-72 bg-cyan-500 rounded-full filter blur-[120px] opacity-20 -bottom-20 -right-20"></div>
-        
-        <div class="text-center flex flex-col items-center">
-            <!-- Premium Animated SVG Logo -->
-            <div class="w-24 h-24 mb-6 relative group cursor-pointer animate-pulse">
-                <svg viewBox="0 0 100 100" class="w-full h-full filter drop-shadow-[0_0_15px_rgba(139,92,246,0.6)]">
-                    <defs>
-                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stop-color="#8B5CF6" />
-                            <stop offset="50%" stop-color="#EC4899" />
-                            <stop offset="100%" stop-color="#06B6D4" />
-                        </linearGradient>
-                    </defs>
-                    <circle cx="50" cy="50" r="42" stroke="url(#logoGrad)" stroke-width="4" fill="none" class="animate-spin" style="animation-duration: 10s; transform-origin: 50% 50%;" />
-                    <path d="M35 50 Q50 25 65 50 Q50 75 35 50 Z" stroke="url(#logoGrad)" stroke-width="5" fill="none" />
-                    <circle cx="50" cy="50" r="8" fill="#FFFFFF" class="animate-ping" style="animation-duration: 3s;" />
-                </svg>
-            </div>
-            <h1 class="text-4xl font-extrabold tracking-widest bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent">
-                SOCIALSPHERE
-            </h1>
-            <p class="text-slate-400 text-sm mt-3 tracking-wider uppercase">Loading Next-Gen Universe</p>
-            <div class="w-48 h-1.5 bg-slate-850 rounded-full mt-6 overflow-hidden relative">
-                <div id="splash-bar" class="absolute left-0 top-0 h-full w-0 bg-gradient-to-r from-purple-500 to-cyan-400 transition-all ease-out duration-300"></div>
-            </div>
-        </div>
-    </div>
-
     <!-- MAIN IMMERSIVE CONTAINER -->
-    <div id="main-wrapper" class="hidden min-h-screen flex flex-col relative overflow-hidden">
+    <div id="main-wrapper" class="min-h-screen flex flex-col relative overflow-hidden">
         
         <!-- GLOWING ORBS BACKGROUND -->
         <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-            <div class="bubble-1 absolute w-[500px] h-[500px] bg-purple-900/10 rounded-full filter blur-[150px] -top-96 -left-48"></div>
-            <div class="bubble-2 absolute w-[600px] h-[600px] bg-cyan-900/10 rounded-full filter blur-[180px] -bottom-96 -right-48"></div>
-            <div class="bubble-3 absolute w-[400px] h-[400px] bg-pink-900/5 rounded-full filter blur-[130px] top-1/2 left-1/3"></div>
+            <div class="bubble-1 absolute w-[400px] h-[400px] bg-purple-950/10 rounded-full filter blur-[140px] -top-80 -left-40"></div>
+            <div class="bubble-2 absolute w-[500px] h-[500px] bg-cyan-950/15 rounded-full filter blur-[160px] -bottom-80 -right-40"></div>
+            <div class="bubble-3 absolute w-[350px] h-[350px] bg-indigo-950/10 rounded-full filter blur-[120px] top-1/2 left-1/4"></div>
         </div>
 
         <!-- ==================== VIEW 1: LANDING PAGE ==================== -->
         <section id="view-landing" class="relative z-10 w-full min-h-screen flex flex-col justify-between">
             <!-- Header/Navbar -->
-            <header class="glass sticky top-0 z-50 w-full border-b border-white/5 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
+            <header class="glass sticky top-0 z-50 w-full border-b border-white/5 py-4.5 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10">
-                        <svg viewBox="0 0 100 100" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]">
-                            <circle cx="50" cy="50" r="42" stroke="url(#logoGrad)" stroke-width="4" fill="none" />
+                    <div class="w-9 h-9">
+                        <svg viewBox="0 0 100 100" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(124,58,237,0.5)]">
+                            <defs>
+                                <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#7C3AED" />
+                                    <stop offset="50%" stop-color="#DB2777" />
+                                    <stop offset="100%" stop-color="#0891B2" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="42" stroke="url(#logoGrad)" stroke-width="4.5" fill="none" />
                             <path d="M35 50 Q50 25 65 50 Q50 75 35 50 Z" stroke="url(#logoGrad)" stroke-width="5" fill="none" />
                         </svg>
                     </div>
-                    <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-white via-purple-300 to-cyan-300 bg-clip-text text-transparent">SOCIALSPHERE</span>
+                    <span class="text-xl font-bold tracking-wider bg-gradient-to-r from-white via-slate-200 to-purple-300 bg-clip-text text-transparent">SOCIALSPHERE</span>
                 </div>
-                <div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wide text-slate-300">
+                <div class="hidden md:flex items-center gap-8 text-xs font-medium tracking-wider uppercase text-slate-300">
                     <a href="#features" class="hover:text-purple-400 transition-colors">Features</a>
                     <a href="#statistics" class="hover:text-purple-400 transition-colors">Insights</a>
                     <a href="#" onclick="switchTab('explore')" class="hover:text-purple-400 transition-colors">Explore Feed</a>
-                    <a href="#creator-tier" class="hover:text-purple-400 transition-colors">Premium Hub</a>
                 </div>
-                <div class="flex items-center gap-4">
-                    <button onclick="showAuthModal('login')" class="px-5 py-2 rounded-full text-sm font-medium glass hover:bg-white/10 transition-all border border-white/10">Sign In</button>
-                    <button onclick="showAuthModal('signup')" class="px-6 py-2 rounded-full text-sm font-semibold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-500 hover:to-pink-500 shadow-lg neon-glow-violet transition-all text-white transform hover:-translate-y-0.5">Join Universe</button>
+                <div class="flex items-center gap-3">
+                    <button onclick="showAuthModal('login')" class="px-5 py-2 rounded-lg text-xs font-semibold glass hover:bg-white/5 transition-all border border-white/5">Sign In</button>
+                    <button onclick="showAuthModal('signup')" class="px-5 py-2 rounded-lg text-xs font-bold bg-purple-600 hover:bg-purple-500 shadow-md neon-glow-violet transition-all text-white transform hover:-translate-y-0.5">Get Started</button>
                 </div>
             </header>
 
             <!-- Hero Section -->
-            <main class="flex-grow flex flex-col justify-center items-center px-6 md:px-12 py-16 text-center max-w-7xl mx-auto w-full relative">
-                <!-- Glowing geometric shapes -->
-                <div class="absolute w-24 h-24 rounded-full border border-purple-500/30 top-12 left-10 animate-bounce" style="animation-duration: 6s;"></div>
-                <div class="absolute w-16 h-16 rounded-xl border border-cyan-500/30 bottom-16 right-10 animate-spin" style="animation-duration: 12s;"></div>
-
-                <div class="space-y-6 max-w-4xl z-10">
-                    <span class="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-purple-500/10 text-purple-300 border border-purple-500/20 inline-block animate-pulse">
-                        🚀 Introducing Version 4.0 Pro
+            <main class="flex-grow flex flex-col justify-center items-center px-6 md:px-12 py-16 text-center max-w-6xl mx-auto w-full relative">
+                <div class="space-y-6 max-w-3xl z-10">
+                    <span class="px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest bg-purple-950/40 text-purple-300 border border-purple-800/30 inline-block animate-pulse">
+                        🚀 Introducing SocialSphere Enterprise 4.0
                     </span>
-                    <h1 class="text-5xl md:text-8xl font-black tracking-tight leading-none">
+                    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight leading-none text-slate-100">
                         Where Millions Connect in <br class="hidden md:block">
-                        <span class="bg-gradient-to-r from-purple-400 via-pink-500 to-cyan-400 bg-clip-text text-transparent">Infinite Dimensions</span>
+                        <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">Real-time Dimensions</span>
                     </h1>
-                    <p class="text-lg md:text-2xl text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
-                        Experience the ultimate ultra-smooth dark-themed playground. Built with cinematic glassmorphism, instant live chats, TikTok style Reels, generative AI tools, and immersive Web3 economics.
+                    <p class="text-base md:text-lg text-slate-400 max-w-xl mx-auto font-light leading-relaxed">
+                        Experience an instant, secure dark social ecosystem. Engineered with premium glassmorphic feeds, encrypted live chats, global Reels, and AI tools built directly in your workspace.
                     </p>
 
-                    <!-- Interactive Mockup & CTA -->
-                    <div class="pt-8 flex flex-wrap justify-center gap-4">
-                        <button onclick="bypassLandingToApp()" class="px-8 py-4 rounded-full text-base font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-cyan-500 text-white shadow-xl hover:opacity-90 transform hover:scale-105 transition-all flex items-center gap-3">
-                            <i class="fa-solid fa-bolt text-lg"></i> Launch Web App
+                    <div class="pt-6 flex flex-wrap justify-center gap-4">
+                        <button onclick="bypassLandingToApp()" class="px-8 py-3.5 rounded-lg text-sm font-bold bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-xl hover:opacity-95 transform hover:scale-[1.02] transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-rocket text-sm"></i> Launch Workspace
                         </button>
-                        <button onclick="showAuthModal('login')" class="px-8 py-4 rounded-full text-base font-semibold glass border border-white/10 text-white hover:bg-white/5 transition-all flex items-center gap-3">
-                            <i class="fa-solid fa-cube text-cyan-400"></i> Explore Live Demo
+                        <button onclick="showAuthModal('login')" class="px-8 py-3.5 rounded-lg text-sm font-semibold glass border border-white/10 text-white hover:bg-white/5 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved text-sm text-cyan-400"></i> Explore Secure Demo
                         </button>
                     </div>
                 </div>
 
                 <!-- Live Dashboard/Feed Previews Carousel -->
-                <div id="landing-showcase" class="mt-16 w-full max-w-5xl rounded-2xl glass-premium p-4 md:p-6 overflow-hidden relative border border-purple-500/20 group hover:border-purple-500/40 transition-all duration-500">
-                    <div class="flex items-center justify-between border-b border-white/5 pb-4 mb-4">
+                <div id="landing-showcase" class="mt-16 w-full max-w-4xl rounded-xl glass-premium p-4 overflow-hidden relative border border-purple-500/20 group hover:border-purple-500/30 transition-all duration-500">
+                    <div class="flex items-center justify-between border-b border-white/5 pb-3 mb-3">
                         <div class="flex items-center gap-2">
-                            <span class="w-3 h-3 rounded-full bg-red-500"></span>
-                            <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
-                            <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/70"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-500/70"></span>
                         </div>
-                        <span class="text-xs text-slate-500 tracking-widest uppercase">socialsphere-webapp.io/feed</span>
-                        <div class="w-4 h-4"><i class="fa-solid fa-lock text-slate-500 text-xs"></i></div>
+                        <span class="text-[10px] text-slate-500 tracking-widest uppercase">system-node.socialsphere.io/live_stream</span>
+                        <div class="w-4 h-4"><i class="fa-solid fa-lock text-slate-600 text-[10px]"></i></div>
                     </div>
-                    <div class="relative rounded-xl overflow-hidden aspect-[16/9] w-full bg-slate-900 flex justify-center items-center">
-                        <!-- Simulated High-fidelity Interactive App Viewport inside Landing Screen -->
-                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" onerror="handleImgError(this)" alt="Dashboard Preview" class="w-full h-full object-cover opacity-60">
-                        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/40 to-transparent flex flex-col justify-end p-8 text-left">
-                            <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Interactive UI Sneak Peek</span>
-                            <h3 class="text-2xl md:text-4xl font-extrabold text-white mt-1">Stunning glassmorphic profiles, real-time messaging, and interactive elements.</h3>
-                            <p class="text-slate-300 text-sm mt-2 max-w-xl">Every post supports beautiful video integrations, generative AI tools, instant rewards, and 3D interactions.</p>
+                    <div class="relative rounded-lg overflow-hidden aspect-[16/9] w-full bg-slate-950 flex justify-center items-center">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80" onerror="handleImgError(this)" alt="Dashboard Preview" class="w-full h-full object-cover opacity-50">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent flex flex-col justify-end p-6 text-left">
+                            <span class="text-[10px] font-bold text-cyan-400 uppercase tracking-widest">Workspace Dashboard</span>
+                            <h3 class="text-xl md:text-2xl font-bold text-white mt-1">Sleek professional widgets, real-time message streams, and admin analytics.</h3>
                         </div>
                     </div>
                 </div>
 
                 <!-- Dynamic Statistics Banner -->
-                <div id="statistics" class="mt-24 grid grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-6xl">
-                    <div class="glass p-6 rounded-2xl text-center border border-white/5 hover:border-purple-500/30 transition-all">
-                        <div class="text-3xl md:text-5xl font-black text-white bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent" data-target="2450000" id="stat-users">0</div>
-                        <p class="text-xs md:text-sm uppercase tracking-wider text-slate-400 mt-2">Active Explorers</p>
+                <div id="statistics" class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-5xl">
+                    <div class="glass p-5 rounded-xl text-center border border-white/5 hover:border-purple-500/10 transition-all">
+                        <div class="text-2xl md:text-3xl font-extrabold text-white bg-gradient-to-r from-purple-400 to-indigo-300 bg-clip-text text-transparent" data-target="2450000" id="stat-users">0</div>
+                        <p class="text-[10px] uppercase tracking-wider text-slate-400 mt-1">Active Accounts</p>
                     </div>
-                    <div class="glass p-6 rounded-2xl text-center border border-white/5 hover:border-purple-500/30 transition-all">
-                        <div class="text-3xl md:text-5xl font-black text-white bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent" data-target="980000" id="stat-stories">0</div>
-                        <p class="text-xs md:text-sm uppercase tracking-wider text-slate-400 mt-2">Daily Moments Shared</p>
+                    <div class="glass p-5 rounded-xl text-center border border-white/5 hover:border-purple-500/10 transition-all">
+                        <div class="text-2xl md:text-3xl font-extrabold text-white bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent" data-target="980000" id="stat-stories">0</div>
+                        <p class="text-[10px] uppercase tracking-wider text-slate-400 mt-1">Moments Broadcaster</p>
                     </div>
-                    <div class="glass p-6 rounded-2xl text-center border border-white/5 hover:border-purple-500/30 transition-all">
-                        <div class="text-3xl md:text-5xl font-black text-white bg-gradient-to-r from-pink-400 to-orange-400 bg-clip-text text-transparent" data-target="450" id="stat-tps">0</div>
-                        <p class="text-xs md:text-sm uppercase tracking-wider text-slate-400 mt-2">Live Spark Reactions/sec</p>
+                    <div class="glass p-5 rounded-xl text-center border border-white/5 hover:border-purple-500/10 transition-all">
+                        <div class="text-2xl md:text-3xl font-extrabold text-white bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent" data-target="450" id="stat-tps">0</div>
+                        <p class="text-[10px] uppercase tracking-wider text-slate-400 mt-1">Reactions / second</p>
                     </div>
-                    <div class="glass p-6 rounded-2xl text-center border border-white/5 hover:border-purple-500/30 transition-all">
-                        <div class="text-3xl md:text-5xl font-black text-white bg-gradient-to-r from-green-400 to-cyan-500 bg-clip-text text-transparent" data-target="99.9" id="stat-uptime">0</div>
-                        <p class="text-xs md:text-sm uppercase tracking-wider text-slate-400 mt-2">Sub-second Latency</p>
+                    <div class="glass p-5 rounded-xl text-center border border-white/5 hover:border-purple-500/10 transition-all">
+                        <div class="text-2xl md:text-3xl font-extrabold text-white bg-gradient-to-r from-green-400 to-cyan-500 bg-clip-text text-transparent" data-target="99.9" id="stat-uptime">0</div>
+                        <p class="text-[10px] uppercase tracking-wider text-slate-400 mt-1">Uptime SLA Index</p>
                     </div>
                 </div>
             </main>
 
             <!-- Landing Footer -->
-            <footer class="border-t border-white/5 py-8 px-6 text-center text-slate-500 text-xs tracking-wider">
-                &copy; 2026 SocialSphere Labs. Built for next-generation communication with premium design engineering.
+            <footer class="border-t border-white/5 py-6 px-6 text-center text-slate-500 text-[11px] tracking-widest uppercase">
+                &copy; 2026 SocialSphere Inc. Built for highly optimized enterprise-grade communications.
             </footer>
         </section>
 
         <!-- ==================== VIEW 2: AUTH MODAL / PORTAL ==================== -->
-        <div id="auth-backdrop" class="hidden fixed inset-0 z-50 bg-brand-dark/90 backdrop-blur-md flex justify-center items-center p-4">
-            <div id="auth-card" class="glass-premium w-full max-w-lg rounded-3xl p-8 relative overflow-hidden border border-purple-500/30 shadow-2xl">
-                <!-- Close Button -->
-                <button onclick="hideAuthModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white transition-colors">
-                    <i class="fa-solid fa-xmark text-xl"></i>
+        <div id="auth-backdrop" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex justify-center items-center p-4">
+            <div id="auth-card" class="glass-premium w-full max-w-md rounded-2xl p-6 md:p-8 relative overflow-hidden border border-purple-500/20 shadow-2xl">
+                
+                <button onclick="hideAuthModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
 
                 <!-- Dynamic Auth Tabs -->
-                <div class="flex justify-center gap-6 border-b border-white/10 pb-4 mb-6">
-                    <button id="tab-login-btn" onclick="toggleAuthTab('login')" class="text-lg font-bold text-white border-b-2 border-purple-500 pb-2 px-2">Login</button>
-                    <button id="tab-signup-btn" onclick="toggleAuthTab('signup')" class="text-lg font-bold text-slate-400 hover:text-white pb-2 px-2">Sign Up</button>
+                <div class="flex justify-center gap-6 border-b border-white/10 pb-3 mb-5">
+                    <button id="tab-login-btn" onclick="toggleAuthTab('login')" class="text-sm font-bold text-white border-b-2 border-purple-500 pb-2 px-2">Login</button>
+                    <button id="tab-signup-btn" onclick="toggleAuthTab('signup')" class="text-sm font-bold text-slate-400 hover:text-white pb-2 px-2">Sign Up</button>
                 </div>
 
                 <!-- Sign In Form -->
                 <div id="form-login" class="space-y-4">
                     <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 mb-2">Username or Email</label>
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-400 mb-1.5">Username or Email</label>
                         <div class="relative">
-                            <i class="fa-regular fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                            <input type="text" id="login-username" value="social_explorer" class="w-full pl-11 pr-4 py-3 bg-slate-900 border border-white/10 rounded-xl focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none text-white transition-all text-sm">
+                            <i class="fa-regular fa-user absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="text" id="login-username" value="social_explorer" class="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-white/10 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none text-white transition-all text-xs">
                         </div>
                     </div>
                     <div>
-                        <div class="flex justify-between items-center mb-2">
-                            <label class="block text-xs uppercase tracking-wider text-slate-400">Password</label>
-                            <a href="#" onclick="showOTP()" class="text-xs text-purple-400 hover:underline">Forgot?</a>
+                        <div class="flex justify-between items-center mb-1.5">
+                            <label class="block text-[10px] uppercase tracking-wider text-slate-400">Password</label>
+                            <a href="#" onclick="showOTP()" class="text-[10px] text-purple-400 hover:underline">Forgot Password?</a>
                         </div>
                         <div class="relative">
-                            <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                            <input type="password" id="login-password" value="explorer123" class="w-full pl-11 pr-4 py-3 bg-slate-900 border border-white/10 rounded-xl focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none text-white transition-all text-sm">
+                            <i class="fa-solid fa-lock absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                            <input type="password" id="login-password" value="explorer123" class="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-white/10 rounded-lg focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none text-white transition-all text-xs">
                         </div>
                     </div>
                     <div class="flex items-center">
-                        <input type="checkbox" id="remember" checked class="w-4 h-4 accent-purple-500 rounded bg-slate-900 border-white/10">
-                        <label for="remember" class="ml-2 text-xs text-slate-300">Keep me synced on this terminal</label>
+                        <input type="checkbox" id="remember" checked class="w-3.5 h-3.5 accent-purple-500 rounded bg-slate-950 border-white/10">
+                        <label for="remember" class="ml-2 text-[11px] text-slate-400">Keep me synced on this terminal</label>
                     </div>
-                    <button onclick="handleLogin()" class="w-full py-3 mt-4 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 font-bold tracking-wider hover:opacity-90 transition-all shadow-lg text-white">
+                    <button onclick="handleLogin()" class="w-full py-2.5 mt-2 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-xs font-bold tracking-wider hover:opacity-90 transition-all text-white">
                         AUTHENTICATE SECURELY
                     </button>
                 </div>
 
                 <!-- Sign Up Form (Hidden by default) -->
                 <div id="form-signup" class="space-y-4 hidden">
-                    <div class="grid grid-cols-2 gap-4">
+                    <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 mb-2">Full Name</label>
-                            <input type="text" id="signup-name" placeholder="John Doe" class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-xl focus:border-purple-500 outline-none text-white text-sm">
+                            <label class="block text-[10px] uppercase tracking-wider text-slate-400 mb-1.5">Full Name</label>
+                            <input type="text" id="signup-name" placeholder="John Doe" class="w-full px-3.5 py-2.5 bg-slate-950 border border-white/10 rounded-lg focus:border-purple-500 outline-none text-white text-xs">
                         </div>
                         <div>
-                            <label class="block text-xs uppercase tracking-wider text-slate-400 mb-2">Username</label>
-                            <input type="text" id="signup-username" placeholder="@john" class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-xl focus:border-purple-500 outline-none text-white text-sm">
+                            <label class="block text-[10px] uppercase tracking-wider text-slate-400 mb-1.5">Username</label>
+                            <input type="text" id="signup-username" placeholder="@john" class="w-full px-3.5 py-2.5 bg-slate-950 border border-white/10 rounded-lg focus:border-purple-500 outline-none text-white text-xs">
                         </div>
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 mb-2">Email Address</label>
-                        <input type="email" id="signup-email" placeholder="john@example.com" class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-xl focus:border-purple-500 outline-none text-white text-sm">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-400 mb-1.5">Email Address</label>
+                        <input type="email" id="signup-email" placeholder="john@example.com" class="w-full px-3.5 py-2.5 bg-slate-950 border border-white/10 rounded-lg focus:border-purple-500 outline-none text-white text-xs">
                     </div>
                     <div>
-                        <label class="block text-xs uppercase tracking-wider text-slate-400 mb-2">Choose Secret Phrase (Password)</label>
-                        <input type="password" id="signup-password" placeholder="••••••••" class="w-full px-4 py-3 bg-slate-900 border border-white/10 rounded-xl focus:border-purple-500 outline-none text-white text-sm">
+                        <label class="block text-[10px] uppercase tracking-wider text-slate-400 mb-1.5">Choose Password</label>
+                        <input type="password" id="signup-password" placeholder="••••••••" class="w-full px-3.5 py-2.5 bg-slate-950 border border-white/10 rounded-lg focus:border-purple-500 outline-none text-white text-xs">
                     </div>
-                    <button onclick="handleSignup()" class="w-full py-3 mt-4 rounded-xl bg-gradient-to-r from-purple-600 to-cyan-500 font-bold tracking-wider hover:opacity-90 transition-all shadow-lg text-white">
-                        INITIALIZE NEW ENTITY
+                    <button onclick="handleSignup()" class="w-full py-2.5 mt-2 rounded-lg bg-gradient-to-r from-purple-600 to-cyan-500 text-xs font-bold tracking-wider hover:opacity-90 transition-all text-white">
+                        INITIALIZE ENTITY
                     </button>
                 </div>
 
                 <!-- OTP Form Overlay inside Auth Card (simulated multi-step) -->
                 <div id="form-otp" class="space-y-4 hidden text-center">
-                    <i class="fa-solid fa-shield-halved text-5xl text-purple-400 mb-2"></i>
-                    <h4 class="text-xl font-bold">Security OTP Code</h4>
-                    <p class="text-xs text-slate-400">A multi-factor simulation code has been routed to your mock feed.</p>
-                    <div class="flex justify-center gap-2 my-4">
-                        <input type="text" maxlength="1" class="w-12 h-12 text-center text-xl font-bold bg-slate-900 border border-purple-500/40 rounded-lg outline-none text-white" value="4">
-                        <input type="text" maxlength="1" class="w-12 h-12 text-center text-xl font-bold bg-slate-900 border border-purple-500/40 rounded-lg outline-none text-white" value="9">
-                        <input type="text" maxlength="1" class="w-12 h-12 text-center text-xl font-bold bg-slate-900 border border-purple-500/40 rounded-lg outline-none text-white" value="2">
-                        <input type="text" maxlength="1" class="w-12 h-12 text-center text-xl font-bold bg-slate-900 border border-purple-500/40 rounded-lg outline-none text-white" value="0">
+                    <i class="fa-solid fa-shield-halved text-4xl text-purple-400 mb-2"></i>
+                    <h4 class="text-lg font-bold">Security OTP Verification</h4>
+                    <p class="text-[11px] text-slate-400">A multi-factor simulation verification token has been generated.</p>
+                    <div class="flex justify-center gap-2 my-3">
+                        <input type="text" maxlength="1" class="w-10 h-10 text-center text-lg font-bold bg-slate-950 border border-purple-500/40 rounded-lg outline-none text-white" value="4">
+                        <input type="text" maxlength="1" class="w-10 h-10 text-center text-lg font-bold bg-slate-950 border border-purple-500/40 rounded-lg outline-none text-white" value="9">
+                        <input type="text" maxlength="1" class="w-10 h-10 text-center text-lg font-bold bg-slate-950 border border-purple-500/40 rounded-lg outline-none text-white" value="2">
+                        <input type="text" maxlength="1" class="w-10 h-10 text-center text-lg font-bold bg-slate-950 border border-purple-500/40 rounded-lg outline-none text-white" value="0">
                     </div>
-                    <button onclick="verifyOTP()" class="w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-500 font-bold text-white transition-all">VERIFY & PROCEED</button>
+                    <button onclick="verifyOTP()" class="w-full py-2.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-xs font-bold text-white transition-all">VERIFY & PROCEED</button>
                 </div>
 
-                <!-- Oauth options -->
-                <div class="mt-6">
+                <div class="mt-5">
                     <div class="relative flex py-2 items-center">
-                        <div class="flex-grow border-t border-white/10"></div>
-                        <span class="flex-shrink mx-4 text-slate-500 text-xs uppercase tracking-wider">Fast Route Integration</span>
-                        <div class="flex-grow border-t border-white/10"></div>
+                        <div class="flex-grow border-t border-white/5"></div>
+                        <span class="flex-shrink mx-4 text-slate-500 text-[9px] uppercase tracking-widest">Corporate Single Sign-On</span>
+                        <div class="flex-grow border-t border-white/5"></div>
                     </div>
-                    <div class="grid grid-cols-3 gap-3 mt-4">
-                        <button onclick="handleSocialAuth('Google')" class="py-2.5 rounded-xl bg-slate-900 hover:bg-slate-850 border border-white/5 flex justify-center items-center gap-2 text-xs font-semibold text-slate-300">
+                    <div class="grid grid-cols-3 gap-2.5 mt-3">
+                        <button onclick="handleSocialAuth('Google')" class="py-2 rounded-lg bg-slate-950 hover:bg-slate-900 border border-white/5 flex justify-center items-center gap-2 text-[10px] font-semibold text-slate-300">
                             <i class="fa-brands fa-google text-red-500"></i> Google
                         </button>
-                        <button onclick="handleSocialAuth('GitHub')" class="py-2.5 rounded-xl bg-slate-900 hover:bg-slate-850 border border-white/5 flex justify-center items-center gap-2 text-xs font-semibold text-slate-300">
+                        <button onclick="handleSocialAuth('GitHub')" class="py-2 rounded-lg bg-slate-950 hover:bg-slate-900 border border-white/5 flex justify-center items-center gap-2 text-[10px] font-semibold text-slate-300">
                             <i class="fa-brands fa-github text-white"></i> GitHub
                         </button>
-                        <button onclick="handleSocialAuth('Meta')" class="py-2.5 rounded-xl bg-slate-900 hover:bg-slate-850 border border-white/5 flex justify-center items-center gap-2 text-xs font-semibold text-slate-300">
+                        <button onclick="handleSocialAuth('Meta')" class="py-2 rounded-lg bg-slate-950 hover:bg-slate-900 border border-white/5 flex justify-center items-center gap-2 text-[10px] font-semibold text-slate-300">
                             <i class="fa-brands fa-facebook text-blue-500"></i> Meta
                         </button>
                     </div>
@@ -369,45 +335,45 @@
             <nav class="glass sticky top-0 z-40 w-full border-b border-white/5 py-3 px-4 md:px-8 flex justify-between items-center">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 cursor-pointer" onclick="switchTab('feed')">
-                        <svg viewBox="0 0 100 100" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(139,92,246,0.5)]">
+                        <svg viewBox="0 0 100 100" class="w-full h-full filter drop-shadow-[0_0_8px_rgba(124,58,237,0.5)]">
                             <circle cx="50" cy="50" r="42" stroke="url(#logoGrad)" stroke-width="4" fill="none" />
                             <path d="M35 50 Q50 25 65 50 Q50 75 35 50 Z" stroke="url(#logoGrad)" stroke-width="5" fill="none" />
                         </svg>
                     </div>
-                    <span class="text-xl font-bold tracking-wider bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent hidden sm:inline-block">SocialSphere</span>
+                    <span class="text-lg font-bold tracking-wider bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent hidden sm:inline-block">SocialSphere</span>
                 </div>
 
                 <!-- Global Search with voice recognition simulation -->
                 <div class="flex-grow max-w-md mx-4 md:mx-8 relative">
-                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                    <input type="text" id="global-search" placeholder="Search profiles, cosmic tags, reels, music..." class="w-full pl-10 pr-10 py-2 bg-slate-900/60 border border-white/10 rounded-full focus:border-purple-500 focus:outline-none text-xs text-white transition-all">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+                    <input type="text" id="global-search" placeholder="Search profiles, cosmic tags, reels, music..." class="w-full pl-9 pr-10 py-2 bg-slate-950/60 border border-white/10 rounded-lg focus:border-purple-500 focus:outline-none text-xs text-white transition-all">
                     <button onclick="triggerVoiceSearch()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-purple-400 transition-colors">
-                        <i id="voice-icon" class="fa-solid fa-microphone"></i>
+                        <i id="voice-icon" class="fa-solid fa-microphone text-xs"></i>
                     </button>
                 </div>
 
                 <!-- Top Right Shortcuts & Profile Access -->
-                <div class="flex items-center gap-2 md:gap-4">
+                <div class="flex items-center gap-2 md:gap-4.5">
                     <!-- Premium Digital Wallet Counter -->
-                    <div onclick="switchTab('ai')" class="cursor-pointer hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs font-bold">
+                    <div onclick="switchTab('ai')" class="cursor-pointer hidden sm:flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs font-bold">
                         <i class="fa-solid fa-coins animate-bounce"></i>
                         <span id="wallet-balance">1,250</span> SPHERE
                     </div>
                     <!-- Quick AI Post Trigger -->
-                    <button onclick="switchTab('ai')" class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 text-white flex justify-center items-center text-xs hover:scale-105 transition-all shadow-md" title="AI Magic Studio">
+                    <button onclick="switchTab('ai')" class="w-8.5 h-8.5 rounded-lg bg-gradient-to-r from-purple-500 to-cyan-500 text-white flex justify-center items-center text-xs hover:scale-105 transition-all shadow-md" title="AI Magic Studio">
                         <i class="fa-solid fa-wand-magic-sparkles"></i>
                     </button>
                     <!-- Notifications Ring -->
                     <div class="relative">
-                        <button onclick="toggleNotificationDropdown()" class="w-8 h-8 md:w-9 md:h-9 rounded-full bg-slate-800 hover:bg-slate-750 text-slate-300 flex justify-center items-center text-sm relative transition-all">
+                        <button onclick="toggleNotificationDropdown()" class="w-8.5 h-8.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 flex justify-center items-center text-sm relative transition-all">
                             <i class="fa-regular fa-bell"></i>
-                            <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-pink-500 rounded-full"></span>
+                            <span class="absolute top-1.5 right-1.5 w-1.5 h-1.5 bg-pink-500 rounded-full"></span>
                         </button>
                         <!-- Dropdown (Popup) -->
-                        <div id="notification-dropdown" class="hidden absolute right-0 mt-3 w-80 glass rounded-2xl border border-white/10 shadow-2xl z-50 p-4 space-y-3 max-h-96 overflow-y-auto">
+                        <div id="notification-dropdown" class="hidden absolute right-0 mt-3 w-80 glass rounded-xl border border-white/10 shadow-2xl z-50 p-4 space-y-3 max-h-96 overflow-y-auto">
                             <div class="flex justify-between items-center border-b border-white/5 pb-2">
-                                <span class="font-bold text-sm">Notifications</span>
-                                <button class="text-xs text-purple-400 hover:underline">Clear all</button>
+                                <span class="font-bold text-xs">System Notifications</span>
+                                <button class="text-[10px] text-purple-400 hover:underline">Clear all</button>
                             </div>
                             <div class="space-y-3 text-xs" id="notification-list">
                                 <!-- Dynamic notifications added here -->
@@ -415,8 +381,8 @@
                         </div>
                     </div>
                     <!-- Profile Widget -->
-                    <div onclick="switchTab('profile')" class="flex items-center gap-2 cursor-pointer border border-white/10 rounded-full p-1 bg-slate-900 hover:bg-slate-800 transition-all">
-                        <img id="nav-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" onerror="handleImgError(this)" alt="Avatar" class="w-7 h-7 md:w-8 md:h-8 rounded-full object-cover">
+                    <div onclick="switchTab('profile')" class="flex items-center gap-2 cursor-pointer border border-white/10 rounded-lg p-1 bg-slate-950 hover:bg-slate-900 transition-all">
+                        <img id="nav-user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" onerror="handleImgError(this)" alt="Avatar" class="w-7.5 h-7.5 rounded-lg object-cover">
                         <span id="nav-user-name" class="text-xs font-bold text-slate-300 pr-2 hidden md:inline">Selena G.</span>
                     </div>
                 </div>
@@ -426,42 +392,42 @@
             <div class="flex-grow flex w-full max-w-7xl mx-auto px-2 md:px-6 py-4 gap-6 relative">
                 
                 <!-- COLUMN 1: LEFT SIDEBAR (STICKY NAVIGATION) -->
-                <aside class="hidden lg:flex flex-col w-64 shrink-0 sticky top-24 h-[calc(100vh-120px)] justify-between pb-6 text-sm">
+                <aside class="hidden lg:flex flex-col w-64 shrink-0 sticky top-24 h-[calc(100vh-120px)] justify-between pb-6 text-xs uppercase tracking-wider">
                     <div class="space-y-1.5">
-                        <button onclick="switchTab('feed')" class="app-nav-btn w-full px-4 py-3.5 rounded-xl font-semibold flex items-center gap-4 bg-gradient-to-r from-purple-600/20 to-cyan-500/10 border-l-4 border-purple-500 text-purple-300 hover:bg-slate-800/50 transition-all">
-                            <i class="fa-solid fa-house-chimney text-lg"></i> Feed Matrix
+                        <button onclick="switchTab('feed')" class="app-nav-btn w-full px-4 py-3 rounded-lg font-semibold flex items-center gap-4 bg-gradient-to-r from-purple-600/20 to-cyan-500/10 border-l-4 border-purple-500 text-purple-300 hover:bg-slate-900/50 transition-all">
+                            <i class="fa-solid fa-house-chimney text-base"></i> Feed Matrix
                         </button>
-                        <button onclick="switchTab('explore')" class="app-nav-btn w-full px-4 py-3.5 rounded-xl font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
-                            <i class="fa-solid fa-compass text-lg"></i> Explore Grid
+                        <button onclick="switchTab('explore')" class="app-nav-btn w-full px-4 py-3 rounded-lg font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
+                            <i class="fa-solid fa-compass text-base"></i> Explore Grid
                         </button>
-                        <button onclick="switchTab('reels')" class="app-nav-btn w-full px-4 py-3.5 rounded-xl font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
-                            <i class="fa-solid fa-film text-lg"></i> Sphere Reels
+                        <button onclick="switchTab('reels')" class="app-nav-btn w-full px-4 py-3 rounded-lg font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
+                            <i class="fa-solid fa-film text-base"></i> Sphere Reels
                         </button>
-                        <button onclick="switchTab('chat')" class="app-nav-btn w-full px-4 py-3.5 rounded-xl font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent relative">
-                            <i class="fa-solid fa-comment-dots text-lg"></i> Pulse Chat
-                            <span class="absolute right-4 px-2 py-0.5 rounded-full bg-cyan-500 text-[10px] text-black font-extrabold">Live</span>
+                        <button onclick="switchTab('chat')" class="app-nav-btn w-full px-4 py-3 rounded-lg font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent relative">
+                            <i class="fa-solid fa-comment-dots text-base"></i> Pulse Chat
+                            <span class="absolute right-4 px-2 py-0.5 rounded bg-cyan-500 text-[9px] text-black font-extrabold normal-case">Live</span>
                         </button>
-                        <button onclick="switchTab('ai')" class="app-nav-btn w-full px-4 py-3.5 rounded-xl font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
-                            <i class="fa-solid fa-wand-magic-sparkles text-lg text-yellow-400"></i> AI Magic Hub
+                        <button onclick="switchTab('ai')" class="app-nav-btn w-full px-4 py-3 rounded-lg font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
+                            <i class="fa-solid fa-wand-magic-sparkles text-base text-yellow-400"></i> AI Magic Hub
                         </button>
-                        <button onclick="switchTab('admin')" class="app-nav-btn w-full px-4 py-3.5 rounded-xl font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
-                            <i class="fa-solid fa-chart-line text-lg"></i> Admin Panel
+                        <button onclick="switchTab('admin')" class="app-nav-btn w-full px-4 py-3 rounded-lg font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
+                            <i class="fa-solid fa-chart-line text-base"></i> Admin Panel
                         </button>
-                        <button onclick="switchTab('profile')" class="app-nav-btn w-full px-4 py-3.5 rounded-xl font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
-                            <i class="fa-solid fa-circle-user text-lg"></i> Cosmic Profile
+                        <button onclick="switchTab('profile')" class="app-nav-btn w-full px-4 py-3 rounded-lg font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
+                            <i class="fa-solid fa-circle-user text-base"></i> Cosmic Profile
                         </button>
-                        <button onclick="switchTab('settings')" class="app-nav-btn w-full px-4 py-3.5 rounded-xl font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
-                            <i class="fa-solid fa-gears text-lg"></i> Settings
+                        <button onclick="switchTab('settings')" class="app-nav-btn w-full px-4 py-3 rounded-lg font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent">
+                            <i class="fa-solid fa-gears text-base"></i> Settings
                         </button>
                     </div>
 
                     <!-- Daily Reward / Mini-Game Glass Promo Widget -->
-                    <div class="glass rounded-2xl p-4 border border-white/5 space-y-3">
+                    <div class="glass rounded-xl p-4 border border-white/5 space-y-3 normal-case tracking-normal">
                         <div class="flex items-center gap-2 text-xs font-bold text-purple-300">
                             <i class="fa-solid fa-gift text-pink-500"></i> Daily Sphere Gift
                         </div>
                         <p class="text-slate-400 text-[11px]">Roll the daily interactive wheel to win digital coins.</p>
-                        <button onclick="spinRewardWheel()" class="w-full py-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-cyan-500 text-xs font-bold text-white hover:opacity-90 transition-all">
+                        <button onclick="spinRewardWheel()" class="w-full py-2 rounded-lg bg-gradient-to-r from-purple-600 to-cyan-500 text-xs font-bold text-white hover:opacity-90 transition-all">
                             Claim Bonus
                         </button>
                     </div>
@@ -473,16 +439,16 @@
                     <!-- TAB 1: FEED MATRIX -->
                     <div id="tab-feed" class="app-tab space-y-6">
                         <!-- Instagram Style Stories Carousel -->
-                        <div class="glass rounded-2xl p-4 border border-white/5 overflow-hidden">
+                        <div class="glass rounded-xl p-4 border border-white/5 overflow-hidden">
                             <div class="flex justify-between items-center mb-3">
-                                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Active Dimensions</span>
+                                <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Dimensions</span>
                                 <span class="text-xs text-purple-400 cursor-pointer hover:underline">Watch All</span>
                             </div>
-                            <div class="flex gap-4 overflow-x-auto no-scrollbar py-2" id="stories-track">
+                            <div class="flex gap-4 overflow-x-auto no-scrollbar py-1" id="stories-track">
                                 <!-- Self Story Trigger -->
                                 <div class="flex flex-col items-center shrink-0 cursor-pointer group" onclick="createNewStory()">
-                                    <div class="w-16 h-16 rounded-full border-2 border-dashed border-purple-500/50 flex justify-center items-center relative mb-1 group-hover:scale-105 transition-all">
-                                        <i class="fa-solid fa-plus text-purple-400 text-lg"></i>
+                                    <div class="w-14 h-14 rounded-full border-2 border-dashed border-purple-500/40 flex justify-center items-center relative mb-1 group-hover:scale-105 transition-all">
+                                        <i class="fa-solid fa-plus text-purple-400 text-base"></i>
                                     </div>
                                     <span class="text-[10px] font-semibold text-slate-400">Share Moment</span>
                                 </div>
@@ -491,25 +457,25 @@
                         </div>
 
                         <!-- Create Post Segment -->
-                        <div class="glass rounded-2xl p-4 border border-white/5 space-y-4">
+                        <div class="glass rounded-xl p-4 border border-white/5 space-y-4">
                             <div class="flex gap-3">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" onerror="handleImgError(this)" alt="Avatar" class="w-10 h-10 rounded-full object-cover">
-                                <textarea id="create-post-input" placeholder="Broadcast some cosmic energy to the social feed..." class="w-full bg-slate-900 border border-white/5 rounded-xl p-3 text-sm focus:border-purple-500 focus:outline-none text-white resize-none h-20 transition-all"></textarea>
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" onerror="handleImgError(this)" alt="Avatar" class="w-10 h-10 rounded-full object-cover border border-white/5">
+                                <textarea id="create-post-input" placeholder="Broadcast some cosmic energy to the social feed..." class="w-full bg-slate-950 border border-white/5 rounded-lg p-3 text-xs focus:border-purple-500 focus:outline-none text-white resize-none h-16 transition-all"></textarea>
                             </div>
                             <div class="flex flex-wrap justify-between items-center border-t border-white/5 pt-3 gap-2">
                                 <div class="flex items-center gap-3">
-                                    <button class="text-slate-400 hover:text-purple-400 text-sm flex items-center gap-1.5" onclick="triggerMockUpload('Image')">
+                                    <button class="text-slate-400 hover:text-purple-400 text-xs flex items-center gap-1.5" onclick="triggerMockUpload('Image')">
                                         <i class="fa-regular fa-image text-cyan-400"></i> Image
                                     </button>
-                                    <button class="text-slate-400 hover:text-pink-400 text-sm flex items-center gap-1.5" onclick="triggerMockUpload('Video')">
+                                    <button class="text-slate-400 hover:text-pink-400 text-xs flex items-center gap-1.5" onclick="triggerMockUpload('Video')">
                                         <i class="fa-regular fa-circle-play text-pink-400"></i> Video
                                     </button>
-                                    <button class="text-slate-400 hover:text-yellow-400 text-sm flex items-center gap-1.5" onclick="triggerMockUpload('GIF')">
+                                    <button class="text-slate-400 hover:text-yellow-400 text-xs flex items-center gap-1.5" onclick="triggerMockUpload('GIF')">
                                         <i class="fa-solid fa-square-poll-vertical text-yellow-400"></i> Poll
                                     </button>
                                 </div>
                                 <div class="flex gap-2">
-                                    <button onclick="aiOptimiseCaption()" class="px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-bold hover:bg-purple-500/20 transition-all" title="Let AI beautify your post caption">
+                                    <button onclick="aiOptimiseCaption()" class="px-3 py-1.5 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-300 text-[10px] font-bold hover:bg-purple-500/20 transition-all" title="Let AI beautify your post caption">
                                         <i class="fa-solid fa-wand-magic-sparkles mr-1"></i> AI Suggest
                                     </button>
                                     <button onclick="publishCustomPost()" class="px-5 py-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-xs font-bold hover:opacity-90 transition-all text-white">
@@ -522,7 +488,7 @@
                         <!-- Posts Feed List -->
                         <div id="feed-posts-container" class="space-y-6">
                             <!-- Skeleton Loader shown temporarily while fetching -->
-                            <div class="glass rounded-2xl p-6 border border-white/5 space-y-4">
+                            <div class="glass rounded-xl p-6 border border-white/5 space-y-4">
                                 <div class="flex items-center gap-3">
                                     <div class="w-10 h-10 rounded-full skeleton"></div>
                                     <div class="space-y-2">
@@ -530,7 +496,7 @@
                                         <div class="w-16 h-2 rounded skeleton"></div>
                                     </div>
                                 </div>
-                                <div class="w-full h-48 rounded-xl skeleton"></div>
+                                <div class="w-full h-48 rounded-lg skeleton"></div>
                             </div>
                         </div>
                     </div>
@@ -538,11 +504,11 @@
                     <!-- TAB 2: EXPLORE GRID -->
                     <div id="tab-explore" class="app-tab hidden space-y-6">
                         <div class="flex justify-between items-center">
-                            <h3 class="text-2xl font-black">Trending Galaxies</h3>
+                            <h3 class="text-xl font-bold">Trending Galaxies</h3>
                             <div class="flex gap-2">
-                                <button class="px-3 py-1 bg-slate-900 border border-white/10 rounded-full text-xs font-semibold text-slate-300 hover:bg-slate-800">All</button>
-                                <button class="px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-xs font-semibold text-purple-300">Photography</button>
-                                <button class="px-3 py-1 bg-slate-900 border border-white/10 rounded-full text-xs font-semibold text-slate-300 hover:bg-slate-800">Technology</button>
+                                <button class="px-3 py-1 bg-slate-900 border border-white/10 rounded-full text-[10px] font-semibold text-slate-300 hover:bg-slate-800">All</button>
+                                <button class="px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full text-[10px] font-semibold text-purple-300">Photography</button>
+                                <button class="px-3 py-1 bg-slate-900 border border-white/10 rounded-full text-[10px] font-semibold text-slate-300 hover:bg-slate-800">Technology</button>
                             </div>
                         </div>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-3" id="explore-masonry">
@@ -552,7 +518,7 @@
 
                     <!-- TAB 3: SPHERE REELS -->
                     <div id="tab-reels" class="app-tab hidden flex justify-center items-center h-[calc(100vh-160px)] relative">
-                        <div id="reels-deck" class="w-full max-w-sm h-full glass-premium rounded-3xl overflow-hidden relative shadow-2xl flex flex-col justify-between border border-purple-500/20">
+                        <div id="reels-deck" class="w-full max-w-sm h-full glass-premium rounded-2xl overflow-hidden relative shadow-2xl flex flex-col justify-between border border-purple-500/20">
                             <!-- Top overlay info -->
                             <div class="absolute top-4 left-4 right-4 z-20 flex justify-between items-center">
                                 <div class="flex items-center gap-2">
@@ -619,10 +585,10 @@
                     <!-- TAB 4: PULSE CHAT -->
                     <div id="tab-chat" class="app-tab hidden grid grid-cols-1 md:grid-cols-3 gap-4 h-[calc(100vh-160px)]">
                         <!-- Contacts Side List -->
-                        <div class="glass rounded-2xl p-4 border border-white/5 flex flex-col h-full overflow-hidden">
+                        <div class="glass rounded-xl p-4 border border-white/5 flex flex-col h-full overflow-hidden">
                             <div class="flex justify-between items-center mb-4">
-                                <span class="font-bold text-sm">Conversations</span>
-                                <button class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-750 text-purple-300 text-xs flex justify-center items-center"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <span class="font-bold text-xs uppercase tracking-wider text-slate-400">Conversations</span>
+                                <button class="w-8 h-8 rounded-lg bg-slate-900 hover:bg-slate-800 text-purple-300 text-xs flex justify-center items-center"><i class="fa-solid fa-pen-to-square"></i></button>
                             </div>
                             <div id="chat-contact-list" class="space-y-2 flex-grow overflow-y-auto no-scrollbar">
                                 <!-- Dynamic Chat Contacts render here -->
@@ -630,11 +596,11 @@
                         </div>
 
                         <!-- Chat Arena Interface -->
-                        <div class="glass rounded-2xl md:col-span-2 border border-white/5 flex flex-col h-full overflow-hidden relative">
+                        <div class="glass rounded-xl md:col-span-2 border border-white/5 flex flex-col h-full overflow-hidden relative">
                             <!-- Active Chat Info Header -->
-                            <div class="border-b border-white/5 p-4 flex justify-between items-center bg-slate-900/50">
+                            <div class="border-b border-white/5 p-4 flex justify-between items-center bg-slate-950/40">
                                 <div class="flex items-center gap-3">
-                                    <img id="active-chat-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" onerror="handleImgError(this)" alt="Active Chat Avatar" class="w-9 h-9 rounded-full object-cover">
+                                    <img id="active-chat-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" onerror="handleImgError(this)" alt="Active Chat Avatar" class="w-9 h-9 rounded-full object-cover border border-purple-500/10">
                                     <div>
                                         <div class="flex items-center gap-1.5">
                                             <span id="active-chat-name" class="font-bold text-xs">Clara Sterling</span>
@@ -643,23 +609,23 @@
                                         <span id="active-chat-status" class="text-[10px] text-slate-400">typing...</span>
                                     </div>
                                 </div>
-                                <div class="flex items-center gap-4 text-slate-300">
-                                    <button onclick="triggerCallUI('Voice')" class="hover:text-cyan-400 transition-colors"><i class="fa-solid fa-phone"></i></button>
-                                    <button onclick="triggerCallUI('Video')" class="hover:text-purple-400 transition-colors"><i class="fa-solid fa-video"></i></button>
-                                    <button class="hover:text-white"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                <div class="flex items-center gap-4 text-slate-400">
+                                    <button onclick="triggerCallUI('Voice')" class="hover:text-cyan-400 transition-colors"><i class="fa-solid fa-phone text-xs"></i></button>
+                                    <button onclick="triggerCallUI('Video')" class="hover:text-purple-400 transition-colors"><i class="fa-solid fa-video text-xs"></i></button>
+                                    <button class="hover:text-white"><i class="fa-solid fa-ellipsis-vertical text-xs"></i></button>
                                 </div>
                             </div>
 
                             <!-- Messages Track -->
-                            <div id="chat-messages-track" class="flex-grow p-4 overflow-y-auto space-y-3 bg-gradient-to-b from-transparent to-slate-950/20">
+                            <div id="chat-messages-track" class="flex-grow p-4 overflow-y-auto space-y-3 bg-gradient-to-b from-transparent to-slate-950/10">
                                 <!-- Dynamically generated chat clouds -->
                             </div>
 
                             <!-- Input Box Area -->
-                            <div class="p-4 border-t border-white/5 bg-slate-900/30 flex gap-2 items-center">
-                                <button class="text-slate-400 hover:text-purple-400 transition-colors"><i class="fa-regular fa-face-smile text-lg"></i></button>
-                                <input type="text" id="chat-input" placeholder="Type an encrypted transmission..." onkeydown="handleChatSendEnter(event)" class="w-full py-2 px-4 bg-slate-900 border border-white/5 rounded-full focus:outline-none focus:border-purple-500 text-xs text-white">
-                                <button onclick="sendChatMessage()" class="w-9 h-9 rounded-full bg-purple-600 hover:bg-purple-500 flex justify-center items-center shrink-0 text-white transition-all">
+                            <div class="p-4 border-t border-white/5 bg-slate-950/20 flex gap-2 items-center">
+                                <button class="text-slate-400 hover:text-purple-400 transition-colors"><i class="fa-regular fa-face-smile text-base"></i></button>
+                                <input type="text" id="chat-input" placeholder="Type an encrypted transmission..." onkeydown="handleChatSendEnter(event)" class="w-full py-2 px-4 bg-slate-950 border border-white/5 rounded-lg focus:outline-none focus:border-purple-500 text-xs text-white">
+                                <button onclick="sendChatMessage()" class="w-9 h-9 rounded-lg bg-purple-600 hover:bg-purple-500 flex justify-center items-center shrink-0 text-white transition-all">
                                     <i class="fa-solid fa-paper-plane text-xs"></i>
                                 </button>
                             </div>
@@ -668,40 +634,40 @@
 
                     <!-- TAB 5: AI MAGIC STUDIO -->
                     <div id="tab-ai" class="app-tab hidden space-y-6">
-                        <div class="glass-premium p-6 rounded-2xl border border-purple-500/20 text-center space-y-4">
-                            <div class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 text-white flex justify-center items-center text-xl mx-auto neon-glow-violet animate-pulse">
+                        <div class="glass-premium p-6 rounded-xl border border-purple-500/20 text-center space-y-3">
+                            <div class="w-11 h-11 rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 text-white flex justify-center items-center text-lg mx-auto neon-glow-violet animate-pulse">
                                 <i class="fa-solid fa-wand-magic-sparkles"></i>
                             </div>
-                            <h3 class="text-2xl font-black">AI Creative Co-Pilot</h3>
-                            <p class="text-sm text-slate-300">Generate magnificent content, bio narratives, catchy post captions, or hashtags on demand.</p>
+                            <h3 class="text-xl font-bold">AI Creative Co-Pilot</h3>
+                            <p class="text-xs text-slate-300">Generate magnificent content, bio narratives, catchy post captions, or hashtags on demand.</p>
                         </div>
 
                         <!-- Generator Panels -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="glass p-4 rounded-xl border border-white/5 space-y-3 text-left">
-                                <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest"><i class="fa-solid fa-comment-dots mr-1"></i> Post Caption Wizard</span>
-                                <input type="text" id="ai-caption-topic" placeholder="e.g. Hiking up the Swiss Alps with cyber gear" class="w-full p-2 bg-slate-900 border border-white/10 rounded-lg text-xs outline-none focus:border-cyan-500 text-white">
+                                <span class="text-[10px] font-bold text-cyan-400 uppercase tracking-widest block"><i class="fa-solid fa-comment-dots mr-1"></i> Post Caption Wizard</span>
+                                <input type="text" id="ai-caption-topic" placeholder="e.g. Hiking up the Swiss Alps with cyber gear" class="w-full p-2 bg-slate-950 border border-white/10 rounded-lg text-xs outline-none focus:border-cyan-500 text-white">
                                 <button onclick="generateAICaption()" class="w-full py-2 bg-cyan-600 hover:bg-cyan-500 rounded-lg text-xs font-bold text-white transition-all">Generate Caption</button>
-                                <div id="ai-caption-output" class="p-2.5 bg-slate-900 border border-dashed border-white/10 rounded-lg text-[11px] text-slate-300 hidden"></div>
+                                <div id="ai-caption-output" class="p-2.5 bg-slate-950 border border-dashed border-white/10 rounded-lg text-[11px] text-slate-300 hidden"></div>
                             </div>
 
                             <div class="glass p-4 rounded-xl border border-white/5 space-y-3 text-left">
-                                <span class="text-xs font-bold text-pink-400 uppercase tracking-widest"><i class="fa-solid fa-hashtag mr-1"></i> Viral Hashtags Generator</span>
-                                <input type="text" id="ai-tags-topic" placeholder="e.g. Modern glassmorphism UI design" class="w-full p-2 bg-slate-900 border border-white/10 rounded-lg text-xs outline-none focus:border-pink-500 text-white">
+                                <span class="text-[10px] font-bold text-pink-400 uppercase tracking-widest block"><i class="fa-solid fa-hashtag mr-1"></i> Viral Hashtags Generator</span>
+                                <input type="text" id="ai-tags-topic" placeholder="e.g. Modern glassmorphism UI design" class="w-full p-2 bg-slate-950 border border-white/10 rounded-lg text-xs outline-none focus:border-pink-500 text-white">
                                 <button onclick="generateAITags()" class="w-full py-2 bg-pink-600 hover:bg-pink-500 rounded-lg text-xs font-bold text-white transition-all">Generate Hashtags</button>
-                                <div id="ai-tags-output" class="p-2.5 bg-slate-900 border border-dashed border-white/10 rounded-lg text-[11px] text-slate-300 hidden"></div>
+                                <div id="ai-tags-output" class="p-2.5 bg-slate-950 border border-dashed border-white/10 rounded-lg text-[11px] text-slate-300 hidden"></div>
                             </div>
                         </div>
 
                         <!-- AI Chat Assistant Integration -->
-                        <div class="glass rounded-2xl border border-white/5 p-4 text-left">
-                            <span class="text-xs font-bold text-purple-300 uppercase tracking-widest block mb-3"><i class="fa-solid fa-brain mr-1.5"></i> Conversational AI Assistant</span>
-                            <div class="border border-white/5 rounded-xl bg-slate-950 p-3 h-48 overflow-y-auto text-xs space-y-3" id="ai-assistant-terminal">
+                        <div class="glass rounded-xl border border-white/5 p-4 text-left">
+                            <span class="text-[10px] font-bold text-purple-300 uppercase tracking-widest block mb-3"><i class="fa-solid fa-brain mr-1.5"></i> Conversational AI Assistant</span>
+                            <div class="border border-white/5 rounded-lg bg-slate-950 p-3 h-48 overflow-y-auto text-xs space-y-3" id="ai-assistant-terminal">
                                 <div class="text-purple-300 font-semibold">[A.U.R.O.R.A Chatbot v1.2 initialized]</div>
                                 <div class="text-slate-400">Ask me anything about maximizing engagement or let me build writeups!</div>
                             </div>
                             <div class="flex gap-2 mt-3">
-                                <input type="text" id="ai-assistant-input" placeholder="Ask AI helper..." class="w-full py-2 px-3 bg-slate-900 border border-white/10 rounded-lg text-xs outline-none focus:border-purple-500 text-white">
+                                <input type="text" id="ai-assistant-input" placeholder="Ask AI helper..." class="w-full py-2 px-3 bg-slate-950 border border-white/10 rounded-lg text-xs outline-none focus:border-purple-500 text-white">
                                 <button onclick="askAIAssistant()" class="px-4 py-2 bg-purple-600 hover:bg-purple-500 rounded-lg text-xs font-bold text-white shrink-0">Send</button>
                             </div>
                         </div>
@@ -710,45 +676,45 @@
                     <!-- TAB 6: ADMIN PANEL -->
                     <div id="tab-admin" class="app-tab hidden space-y-6 text-left">
                         <div class="flex justify-between items-center">
-                            <h3 class="text-2xl font-black">Creator Administration Control</h3>
-                            <span class="px-2 py-1 rounded bg-green-500/15 text-green-400 text-xs font-bold border border-green-500/20">Operational</span>
+                            <h3 class="text-xl font-bold">Platform Metrics Controls</h3>
+                            <span class="px-2 py-0.5 rounded bg-green-500/10 text-green-400 text-[10px] font-bold border border-green-500/20">Operational</span>
                         </div>
 
                         <!-- Mini Stats Grid -->
                         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div class="glass p-4 rounded-xl border border-white/5">
-                                <span class="text-[10px] uppercase tracking-wider text-slate-500">Total Users managed</span>
-                                <div class="text-xl font-extrabold text-white mt-1">452,120</div>
+                            <div class="glass p-4 rounded-lg border border-white/5">
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 block mb-1">Total Managed</span>
+                                <div class="text-lg font-extrabold text-white">452,120</div>
                             </div>
-                            <div class="glass p-4 rounded-xl border border-white/5">
-                                <span class="text-[10px] uppercase tracking-wider text-slate-500">Moderated Posts</span>
-                                <div class="text-xl font-extrabold text-white mt-1">11,402</div>
+                            <div class="glass p-4 rounded-lg border border-white/5">
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 block mb-1">Moderations</span>
+                                <div class="text-lg font-extrabold text-white">11,402</div>
                             </div>
-                            <div class="glass p-4 rounded-xl border border-white/5">
-                                <span class="text-[10px] uppercase tracking-wider text-slate-500">Simulated Revenue</span>
-                                <div class="text-xl font-extrabold text-purple-400 mt-1">$45,210</div>
+                            <div class="glass p-4 rounded-lg border border-white/5">
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 block mb-1">Gross Yield</span>
+                                <div class="text-lg font-extrabold text-purple-400">$45,210</div>
                             </div>
-                            <div class="glass p-4 rounded-xl border border-white/5">
-                                <span class="text-[10px] uppercase tracking-wider text-slate-500">Server Latency</span>
-                                <div class="text-xl font-extrabold text-cyan-400 mt-1">14ms</div>
+                            <div class="glass p-4 rounded-lg border border-white/5">
+                                <span class="text-[9px] uppercase tracking-wider text-slate-500 block mb-1">Core Latency</span>
+                                <div class="text-lg font-extrabold text-cyan-400">14ms</div>
                             </div>
                         </div>
 
                         <!-- Interactive Chart.js graph -->
-                        <div class="glass p-4 rounded-2xl border border-white/5">
-                            <span class="text-xs font-bold text-slate-400 block mb-4 uppercase tracking-widest">Subscriber Growth Analytics (Real-time Simulation)</span>
+                        <div class="glass p-4 rounded-xl border border-white/5">
+                            <span class="text-[10px] font-bold text-slate-400 block mb-4 uppercase tracking-widest">Platform Analytics Tracker (Real-time Simulation)</span>
                             <div class="w-full aspect-[2/1]">
                                 <canvas id="admin-growth-chart"></canvas>
                             </div>
                         </div>
 
                         <!-- System Logs Panel -->
-                        <div class="glass p-4 rounded-2xl border border-white/5">
-                            <span class="text-xs font-bold text-slate-400 block mb-3 uppercase tracking-widest">Platform Activity Log</span>
+                        <div class="glass p-4 rounded-xl border border-white/5">
+                            <span class="text-[10px] font-bold text-slate-400 block mb-3 uppercase tracking-widest">Platform Log Stream</span>
                             <div class="bg-slate-950 p-3 rounded-lg font-mono text-[10px] text-green-400 space-y-1 h-32 overflow-y-auto" id="admin-log-box">
                                 <div>[SYS] 11:09:20 - WebSocket initialized securely on port 443.</div>
                                 <div>[AUTH] 11:09:21 - Account token verify check: SUCCESS.</div>
-                                <div>[DB] 11:09:22 - Dynamic mock database seeded with mock users and profiles.</div>
+                                <div>[DB] 11:09:22 - Dynamic database cache loaded with custom records.</div>
                             </div>
                         </div>
                     </div>
@@ -756,64 +722,64 @@
                     <!-- TAB 7: COSMIC PROFILE -->
                     <div id="tab-profile" class="app-tab hidden space-y-6 text-left">
                         <!-- Cover Banner and profile image -->
-                        <div class="relative rounded-2xl overflow-hidden aspect-[3/1] bg-gradient-to-r from-purple-800 to-pink-700">
+                        <div class="relative rounded-xl overflow-hidden aspect-[3/1] bg-gradient-to-r from-purple-900 to-indigo-950">
                             <img id="profile-cover" src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=800&q=80" onerror="handleImgError(this)" alt="Cover" class="w-full h-full object-cover opacity-80">
                             <!-- Verification badge marker floating -->
-                            <div class="absolute bottom-4 right-4 py-1 px-3 bg-slate-900/80 border border-white/10 rounded-full text-xs text-purple-300 font-bold flex items-center gap-1.5 backdrop-blur">
-                                <i class="fa-solid fa-circle-check text-purple-400"></i> Verified Cosmic Identity
+                            <div class="absolute bottom-4 right-4 py-1 px-3 bg-slate-950/80 border border-white/10 rounded-full text-[10px] text-purple-300 font-bold flex items-center gap-1.5 backdrop-blur">
+                                <i class="fa-solid fa-circle-check text-purple-400"></i> Verified Account Identity
                             </div>
                         </div>
 
                         <!-- Profile Header Meta -->
                         <div class="flex flex-col md:flex-row gap-4 items-center justify-between -mt-12 px-6">
                             <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
-                                <img id="profile-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" onerror="handleImgError(this)" alt="Avatar" class="w-24 h-24 rounded-full object-cover border-4 border-brand-dark relative z-10 shadow-xl">
+                                <img id="profile-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" onerror="handleImgError(this)" alt="Avatar" class="w-24 h-24 rounded-full object-cover border-4 border-slate-950 relative z-10 shadow-xl">
                                 <div class="mt-4 md:mt-8">
-                                    <div class="flex items-center gap-2">
-                                        <h4 id="profile-name" class="text-2xl font-black">Selena G.</h4>
-                                        <span class="text-xs bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 py-0.5 px-2 rounded-full font-bold">Pro</span>
+                                    <div class="flex items-center gap-2 justify-center md:justify-start">
+                                        <h4 id="profile-name" class="text-xl font-bold">Selena G.</h4>
+                                        <span class="text-[9px] bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 py-0.5 px-2 rounded font-bold">Pro</span>
                                     </div>
                                     <p id="profile-handle" class="text-xs text-purple-400 font-mono mt-0.5">@selena_universe</p>
                                 </div>
                             </div>
                             <div class="flex gap-2 md:mt-8">
-                                <button onclick="showProfileEditModal()" class="px-5 py-2 rounded-xl text-xs font-bold glass border border-white/10 hover:bg-white/10 transition-all text-white">
-                                    Edit Settings
+                                <button onclick="showProfileEditModal()" class="px-4 py-2 rounded-lg text-xs font-bold glass border border-white/10 hover:bg-white/10 transition-all text-white">
+                                    Edit Core Settings
                                 </button>
-                                <button onclick="shareProfileQR()" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-750 flex justify-center items-center text-xs text-slate-300 border border-white/5">
+                                <button onclick="shareProfileQR()" class="w-9 h-9 rounded-lg bg-slate-900 hover:bg-slate-800 flex justify-center items-center text-xs text-slate-300 border border-white/5">
                                     <i class="fa-solid fa-qrcode"></i>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Bio & details block -->
-                        <div class="glass p-4 rounded-2xl border border-white/5 space-y-4">
+                        <div class="glass p-4 rounded-xl border border-white/5 space-y-4">
                             <div>
-                                <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400">Bio Manifest</h5>
+                                <h5 class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Bio Description</h5>
                                 <p id="profile-bio" class="text-xs text-slate-300 mt-1.5 leading-relaxed">Designer of futuristic glassmorphism environments and neon cyberware visuals. Creating digital universes across SocialSphere, and experimenting with procedural aesthetics. ✨🌌</p>
                             </div>
                             <div class="grid grid-cols-3 gap-2 border-t border-white/5 pt-4 text-center">
                                 <div>
-                                    <div class="text-lg font-extrabold text-white">2.4M</div>
-                                    <div class="text-[10px] text-slate-500 uppercase">Followers</div>
+                                    <div class="text-base font-extrabold text-white">2.4M</div>
+                                    <div class="text-[9px] text-slate-500 uppercase">Followers</div>
                                 </div>
                                 <div>
-                                    <div class="text-lg font-extrabold text-white">412</div>
-                                    <div class="text-[10px] text-slate-500 uppercase">Following</div>
+                                    <div class="text-base font-extrabold text-white">412</div>
+                                    <div class="text-[9px] text-slate-500 uppercase">Following</div>
                                 </div>
                                 <div>
-                                    <div class="text-lg font-extrabold text-white">962</div>
-                                    <div class="text-[10px] text-slate-500 uppercase">Broadcasts</div>
+                                    <div class="text-base font-extrabold text-white">962</div>
+                                    <div class="text-[9px] text-slate-500 uppercase">Broadcasts</div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Posts Gallery Selection Tabs -->
                         <div class="space-y-4">
-                            <div class="flex gap-4 border-b border-white/5 pb-2">
-                                <button class="text-xs font-bold text-white border-b-2 border-purple-500 pb-1.5">My Posts</button>
-                                <button class="text-xs font-bold text-slate-500 hover:text-white pb-1.5">Saved Spaces</button>
-                                <button class="text-xs font-bold text-slate-500 hover:text-white pb-1.5">Achievements</button>
+                            <div class="flex gap-4 border-b border-white/5 pb-2 text-xs">
+                                <button class="font-bold text-white border-b-2 border-purple-500 pb-1.5">My Posts</button>
+                                <button class="font-bold text-slate-500 hover:text-white pb-1.5">Saved Spaces</button>
+                                <button class="font-bold text-slate-500 hover:text-white pb-1.5">Achievements</button>
                             </div>
                             <div id="profile-posts-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3">
                                 <!-- Generated posts gallery images -->
@@ -823,8 +789,8 @@
 
                     <!-- TAB 8: SETTINGS -->
                     <div id="tab-settings" class="app-tab hidden space-y-6 text-left">
-                        <h3 class="text-2xl font-black">System Controls</h3>
-                        <div class="glass rounded-2xl border border-white/5 p-4 space-y-4">
+                        <h3 class="text-xl font-bold">System Workspace Controls</h3>
+                        <div class="glass rounded-xl border border-white/5 p-4 space-y-4">
                             <div class="flex items-center justify-between">
                                 <div>
                                     <h5 class="text-xs font-bold text-white">Ultra Performance Render</h5>
@@ -851,14 +817,14 @@
                             <hr class="border-white/5">
                             <div>
                                 <label class="block text-xs font-bold text-slate-400 mb-2">Primary Gradient Highlight Color</label>
-                                <select class="w-full bg-slate-900 border border-white/10 p-2.5 rounded-xl text-xs text-white outline-none">
+                                <select class="w-full bg-slate-950 border border-white/10 p-2.5 rounded-lg text-xs text-white outline-none">
                                     <option>Neon Purple & Royal Indigo</option>
                                     <option>Cyan Flare & Emerald Aura</option>
                                     <option>Hot Magenta & Solar Gold</option>
                                 </select>
                             </div>
                             <hr class="border-white/5">
-                            <button onclick="logoutApp()" class="w-full py-2.5 rounded-xl bg-red-600/15 hover:bg-red-600/25 border border-red-500/20 text-red-400 text-xs font-bold text-center transition-all">
+                            <button onclick="logoutApp()" class="w-full py-2.5 rounded-lg bg-red-600/10 hover:bg-red-600/20 border border-red-500/20 text-red-400 text-xs font-bold text-center transition-all">
                                 TERMINATE SPHERE SESSION
                             </button>
                         </div>
@@ -869,25 +835,25 @@
                 <!-- COLUMN 3: RIGHT SIDEBAR (TRENDING & SUGGESTED) -->
                 <aside class="hidden xl:flex flex-col w-80 shrink-0 sticky top-24 h-[calc(100vh-120px)] overflow-y-auto no-scrollbar pb-6 space-y-6 text-left">
                     <!-- Dynamic Weather / Place HUD Widget -->
-                    <div id="weather-hud" class="glass rounded-2xl p-4 border border-white/5 flex items-center justify-between bg-gradient-to-r from-purple-950/10 to-transparent">
+                    <div id="weather-hud" class="glass rounded-xl p-4 border border-white/5 flex items-center justify-between bg-gradient-to-r from-purple-950/10 to-transparent">
                         <div>
-                            <span class="text-[10px] text-slate-400 uppercase tracking-widest"><i class="fa-solid fa-location-dot"></i> Neo Tokyo Station</span>
-                            <div class="text-lg font-extrabold text-white mt-0.5" id="weather-temp">24°C - Rain</div>
+                            <span class="text-[9px] text-slate-400 uppercase tracking-widest block"><i class="fa-solid fa-location-dot"></i> Neo Tokyo Station</span>
+                            <div class="text-base font-extrabold text-white mt-0.5" id="weather-temp">24°C - Rain</div>
                         </div>
-                        <i class="fa-solid fa-cloud-showers-heavy text-cyan-400 text-2xl animate-pulse"></i>
+                        <i class="fa-solid fa-cloud-showers-heavy text-cyan-400 text-xl animate-pulse"></i>
                     </div>
 
                     <!-- Recommended Creators -->
-                    <div class="glass rounded-2xl p-4 border border-white/5 space-y-3">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block"><i class="fa-solid fa-circle-nodes mr-1 text-purple-400"></i> Galaxy Explorers</span>
+                    <div class="glass rounded-xl p-4 border border-white/5 space-y-3">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block"><i class="fa-solid fa-circle-nodes mr-1 text-purple-400"></i> Galaxy Explorers</span>
                         <div id="suggested-users-list" class="space-y-3">
                             <!-- Dynamic recommended users generated -->
                         </div>
                     </div>
 
                     <!-- Trending Hashtags -->
-                    <div class="glass rounded-2xl p-4 border border-white/5 space-y-3">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block"><i class="fa-solid fa-arrow-trend-up mr-1 text-pink-400"></i> Hot Transmissions</span>
+                    <div class="glass rounded-xl p-4 border border-white/5 space-y-3">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block"><i class="fa-solid fa-arrow-trend-up mr-1 text-pink-400"></i> Hot Transmissions</span>
                         <div class="space-y-2 text-xs" id="trending-hashtags-list">
                             <!-- Generated dynamic hashtags -->
                         </div>
@@ -897,33 +863,33 @@
             </div>
 
             <!-- Mobile Navigation Tab Bar (Fixed Bottom) -->
-            <footer class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass border-t border-white/10 py-2.5 px-4 flex justify-around items-center">
+            <footer class="lg:hidden fixed bottom-0 left-0 right-0 z-50 glass border-t border-white/10 py-2.5 px-4 flex justify-around items-center text-[10px]">
                 <button onclick="switchTab('feed')" class="mobile-nav-btn flex flex-col items-center gap-0.5 text-purple-400">
                     <i class="fa-solid fa-house-chimney text-base"></i>
-                    <span class="text-[9px] font-bold">Feed</span>
+                    <span class="font-bold">Feed</span>
                 </button>
                 <button onclick="switchTab('explore')" class="mobile-nav-btn flex flex-col items-center gap-0.5 text-slate-500">
                     <i class="fa-solid fa-compass text-base"></i>
-                    <span class="text-[9px] font-bold">Explore</span>
+                    <span class="font-bold">Explore</span>
                 </button>
                 <button onclick="switchTab('reels')" class="mobile-nav-btn flex flex-col items-center gap-0.5 text-slate-500">
                     <i class="fa-solid fa-film text-base"></i>
-                    <span class="text-[9px] font-bold">Reels</span>
+                    <span class="font-bold">Reels</span>
                 </button>
                 <button onclick="switchTab('chat')" class="mobile-nav-btn flex flex-col items-center gap-0.5 text-slate-500 relative">
                     <i class="fa-solid fa-comment-dots text-base"></i>
-                    <span class="text-[9px] font-bold">Chat</span>
+                    <span class="font-bold">Chat</span>
                 </button>
                 <button onclick="switchTab('ai')" class="mobile-nav-btn flex flex-col items-center gap-0.5 text-slate-500">
                     <i class="fa-solid fa-wand-magic-sparkles text-base"></i>
-                    <span class="text-[9px] font-bold">AI</span>
+                    <span class="font-bold">AI</span>
                 </button>
             </footer>
         </div>
 
         <!-- ==================== DIALOGS & OVERLAYS ==================== -->
         <!-- Story View Immersive Overlay -->
-        <div id="story-overlay" class="hidden fixed inset-0 z-[100] bg-black/95 backdrop-blur-md flex flex-col justify-between p-6">
+        <div id="story-overlay" class="hidden fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-md flex flex-col justify-between p-6">
             <div class="w-full max-w-md mx-auto flex-grow flex flex-col justify-between">
                 <!-- Progress Bars -->
                 <div class="w-full h-1 bg-slate-800 rounded-full overflow-hidden flex gap-1 relative" id="story-progress-container">
@@ -952,18 +918,18 @@
         </div>
 
         <!-- Call UI Simulated Overlays (Voice/Video) -->
-        <div id="call-overlay" class="hidden fixed inset-0 z-[100] bg-brand-dark/95 backdrop-blur flex flex-col justify-between p-8 text-center items-center">
+        <div id="call-overlay" class="hidden fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur flex flex-col justify-between p-8 text-center items-center">
             <div class="space-y-4 mt-12">
                 <div class="relative inline-block">
                     <img id="call-avatar" src="" onerror="handleImgError(this)" class="w-24 h-24 rounded-full object-cover border-4 border-purple-500 neon-glow-violet mx-auto">
-                    <span class="absolute bottom-1 right-1 w-4 h-4 bg-purple-500 border-2 border-brand-dark rounded-full animate-ping"></span>
+                    <span class="absolute bottom-1 right-1 w-4 h-4 bg-purple-500 border-2 border-slate-950 rounded-full animate-ping"></span>
                 </div>
-                <h4 id="call-title" class="text-xl font-bold">Calling Clara Sterling</h4>
+                <h4 id="call-title" class="text-lg font-bold">Calling Clara Sterling</h4>
                 <p id="call-type" class="text-xs uppercase tracking-wider text-cyan-400 animate-pulse">Establishing secure voice link...</p>
             </div>
 
             <!-- Animated Call Screen Simulating Video Stream -->
-            <div id="call-video-screen" class="hidden w-full max-w-sm aspect-video bg-slate-950 border border-white/10 rounded-2xl relative overflow-hidden my-4">
+            <div id="call-video-screen" class="hidden w-full max-w-sm aspect-video bg-slate-900 border border-white/10 rounded-xl relative overflow-hidden my-4">
                 <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=500&q=80" onerror="handleImgError(this)" alt="Camera Stream" class="w-full h-full object-cover">
                 <div class="absolute bottom-2 left-2 px-2 py-1 bg-black/60 rounded text-[9px] text-white">Incoming Stream</div>
             </div>
@@ -977,7 +943,7 @@
         </div>
 
         <!-- Custom Notification Prompt Popup -->
-        <div id="custom-prompt" class="fixed bottom-6 right-6 z-[101] max-w-xs glass-premium rounded-2xl p-4 border border-purple-500/30 shadow-2xl translate-y-24 opacity-0 transition-all duration-500 flex items-start gap-3">
+        <div id="custom-prompt" class="fixed bottom-6 right-6 z-[101] max-w-xs glass-premium rounded-xl p-4 border border-purple-500/30 shadow-2xl translate-y-24 opacity-0 transition-all duration-500 flex items-start gap-3">
             <div class="w-8 h-8 rounded-full bg-purple-500 flex justify-center items-center shrink-0 text-white">
                 <i id="prompt-icon" class="fa-solid fa-bell"></i>
             </div>
@@ -989,22 +955,22 @@
 
         <!-- Custom Post Options Menu Modal -->
         <div id="post-menu-modal" class="hidden fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex justify-center items-center p-4">
-            <div class="glass-premium w-full max-w-xs rounded-2xl p-6 relative border border-purple-500/20 shadow-2xl space-y-3 text-left">
+            <div class="glass-premium w-full max-w-xs rounded-xl p-6 relative border border-purple-500/20 shadow-2xl space-y-3 text-left">
                 <button onclick="hidePostMenu()" class="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors">
                     <i class="fa-solid fa-xmark"></i>
                 </button>
-                <h4 class="text-sm font-bold uppercase tracking-wider text-purple-400 mb-2">Transmission Actions</h4>
+                <h4 class="text-xs font-bold uppercase tracking-wider text-purple-400 mb-2">Transmission Actions</h4>
                 <input type="hidden" id="menu-active-post-id">
-                <button onclick="handlePinPost()" class="w-full py-2 px-3 rounded-xl hover:bg-white/5 text-xs text-left text-slate-200 transition-all flex items-center gap-2">
+                <button onclick="handlePinPost()" class="w-full py-2 px-3 rounded-lg hover:bg-white/5 text-xs text-left text-slate-200 transition-all flex items-center gap-2">
                     <i class="fa-solid fa-thumbtack text-purple-400 w-4"></i> <span id="menu-pin-text">Pin / Unpin Broadcast</span>
                 </button>
-                <button onclick="handleEditPost()" class="w-full py-2 px-3 rounded-xl hover:bg-white/5 text-xs text-left text-slate-200 transition-all flex items-center gap-2">
+                <button onclick="handleEditPost()" class="w-full py-2 px-3 rounded-lg hover:bg-white/5 text-xs text-left text-slate-200 transition-all flex items-center gap-2">
                     <i class="fa-regular fa-pen-to-square text-cyan-400 w-4"></i> Edit Transmission
                 </button>
-                <button onclick="handleAIDustPost()" class="w-full py-2 px-3 rounded-xl hover:bg-white/5 text-xs text-left text-slate-200 transition-all flex items-center gap-2">
+                <button onclick="handleAIDustPost()" class="w-full py-2 px-3 rounded-lg hover:bg-white/5 text-xs text-left text-slate-200 transition-all flex items-center gap-2">
                     <i class="fa-solid fa-wand-magic-sparkles text-yellow-400 w-4"></i> AI Polish Rewrite
                 </button>
-                <button onclick="handleDeletePost()" class="w-full py-2 px-3 rounded-xl hover:bg-red-500/10 hover:text-red-400 text-xs text-left text-red-500 transition-all flex items-center gap-2">
+                <button onclick="handleDeletePost()" class="w-full py-2 px-3 rounded-lg hover:bg-red-500/10 hover:text-red-400 text-xs text-left text-red-500 transition-all flex items-center gap-2">
                     <i class="fa-regular fa-trash-can w-4"></i> Delete Broadcast
                 </button>
             </div>
@@ -1077,53 +1043,36 @@
             el.src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=500&q=80';
         }
 
-        // Initialize App on Window Load
-        window.addEventListener('load', () => {
-            // Animate Splash progress bar
-            let loaderProgress = 0;
-            const progressInterval = setInterval(() => {
-                loaderProgress += Math.random() * 20;
-                if (loaderProgress >= 100) {
-                    loaderProgress = 100;
-                    clearInterval(progressInterval);
-                    
-                    // Exit Splash screen with smooth GSAP fade
-                    gsap.to("#splash-screen", {
-                        duration: 0.8,
-                        opacity: 0,
-                        pointerEvents: 'none',
-                        onComplete: () => {
-                            document.getElementById('splash-screen').classList.add('hidden');
-                            document.getElementById('main-wrapper').classList.remove('hidden');
-                            initializeAppFramework();
-                        }
-                    });
-                }
-                document.getElementById('splash-bar').style.width = loaderProgress + '%';
-            }, 100);
+        // Instant Initializer on DOM Load (Preloader Completely Removed)
+        document.addEventListener('DOMContentLoaded', () => {
+            const splashScreen = document.getElementById('splash-screen');
+            if (splashScreen) splashScreen.remove(); // Prune completely from DOM
+
+            document.getElementById('main-wrapper').classList.remove('hidden');
+            initializeAppFramework();
         });
 
         function initializeAppFramework() {
-            // Animate Landing elements with GSAP
-            gsap.from("header", { duration: 1, y: -50, opacity: 0, ease: "power3.out" });
-            gsap.from("h1", { duration: 1.2, y: 80, opacity: 0, ease: "power4.out", delay: 0.2 });
-            gsap.from("p", { duration: 1.2, y: 50, opacity: 0, ease: "power3.out", delay: 0.4 });
-            gsap.from("#landing-showcase", { duration: 1.5, scale: 0.9, opacity: 0, ease: "power2.out", delay: 0.6 });
+            // Animate Landing elements with clean GSAP
+            gsap.from("header", { duration: 0.8, y: -40, opacity: 0, ease: "power3.out" });
+            gsap.from("h1", { duration: 1, y: 50, opacity: 0, ease: "power4.out", delay: 0.1 });
+            gsap.from("p", { duration: 1, y: 35, opacity: 0, ease: "power3.out", delay: 0.2 });
+            gsap.from("#landing-showcase", { duration: 1.2, scale: 0.95, opacity: 0, ease: "power2.out", delay: 0.3 });
 
-            // Initialize counter trigger for statistics when scrolling
+            // Initialize statistics immediately
             animateCounter("stat-users");
             animateCounter("stat-stories");
             animateCounter("stat-tps");
             animateCounter("stat-uptime");
 
-            // Seed LocalStorage / Database cache
+            // Seed Cache database
             if (!localStorage.getItem('posts_db')) {
                 localStorage.setItem('posts_db', JSON.stringify(mockPosts));
             } else {
                 mockPosts = JSON.parse(localStorage.getItem('posts_db'));
             }
 
-            // Build dynamic feeds
+            // Build feed components
             buildStoriesTrack();
             buildFeedPosts();
             buildExploreMasonry();
@@ -1133,23 +1082,23 @@
             buildProfileGallery();
             initializeAdminChart();
 
-            // Setup real-time dynamic intervals (e.g. mock notifications, active chat typing, logs)
+            // Run automated systems
             setupSimulatedInteractions();
         }
 
-        // Animated Stats Counter Utility
         function animateCounter(id) {
             const el = document.getElementById(id);
+            if (!el) return;
             const target = parseFloat(el.getAttribute("data-target"));
             let start = 0;
-            const speed = 100;
+            const speed = 80;
             const inc = target / speed;
 
             const updateCount = () => {
                 start += inc;
                 if (start < target) {
                     el.innerText = id === 'stat-uptime' ? start.toFixed(1) + '%' : Math.floor(start).toLocaleString();
-                    setTimeout(updateCount, 15);
+                    setTimeout(updateCount, 12);
                 } else {
                     el.innerText = id === 'stat-uptime' ? target + '%' : target.toLocaleString();
                 }
@@ -1157,35 +1106,32 @@
             updateCount();
         }
 
-        // Landing Navigation Bypasser
         function bypassLandingToApp() {
             isLandingPassed = true;
             gsap.to("#view-landing", {
-                duration: 0.5,
+                duration: 0.4,
                 opacity: 0,
-                y: -50,
+                y: -30,
                 onComplete: () => {
                     document.getElementById('view-landing').classList.add('hidden');
-                    showAuthModal('login'); // Require quick secure sign-in mockup
+                    showAuthModal('login');
                 }
             });
         }
 
-        // Authentication Handlers
         function showAuthModal(mode) {
             document.getElementById('auth-backdrop').classList.remove('hidden');
-            gsap.fromTo("#auth-card", { scale: 0.8, opacity: 0 }, { duration: 0.4, scale: 1, opacity: 1, ease: "back.out(1.7)" });
+            gsap.fromTo("#auth-card", { scale: 0.9, opacity: 0 }, { duration: 0.3, scale: 1, opacity: 1, ease: "power3.out" });
             toggleAuthTab(mode);
         }
 
         function hideAuthModal() {
             gsap.to("#auth-card", {
-                duration: 0.3,
-                scale: 0.8,
+                duration: 0.25,
+                scale: 0.9,
                 opacity: 0,
                 onComplete: () => {
                     document.getElementById('auth-backdrop').classList.add('hidden');
-                    // Fallback to avoid dead view
                     if (!isAuthenticated && isLandingPassed) {
                         document.getElementById('view-landing').classList.remove('hidden');
                         gsap.to("#view-landing", { opacity: 1, y: 0 });
@@ -1204,13 +1150,13 @@
             formOtp.classList.add('hidden');
 
             if (mode === 'login') {
-                tabLogin.className = "text-lg font-bold text-white border-b-2 border-purple-500 pb-2 px-2";
-                tabSignup.className = "text-lg font-bold text-slate-400 hover:text-white pb-2 px-2";
+                tabLogin.className = "text-sm font-bold text-white border-b-2 border-purple-500 pb-2 px-2";
+                tabSignup.className = "text-sm font-bold text-slate-400 hover:text-white pb-2 px-2";
                 formLogin.classList.remove('hidden');
                 formSignup.classList.add('hidden');
             } else {
-                tabSignup.className = "text-lg font-bold text-white border-b-2 border-purple-500 pb-2 px-2";
-                tabLogin.className = "text-lg font-bold text-slate-400 hover:text-white pb-2 px-2";
+                tabSignup.className = "text-sm font-bold text-white border-b-2 border-purple-500 pb-2 px-2";
+                tabLogin.className = "text-sm font-bold text-slate-400 hover:text-white pb-2 px-2";
                 formSignup.classList.remove('hidden');
                 formLogin.classList.add('hidden');
             }
@@ -1237,19 +1183,18 @@
             document.getElementById('view-landing').classList.add('hidden');
             document.getElementById('view-app').classList.remove('hidden');
             
-            // GSAP Entrance for Main App elements
-            gsap.from("nav", { duration: 0.8, y: -40, opacity: 0, ease: "power3.out" });
-            gsap.from("aside", { duration: 0.8, x: -50, opacity: 0, ease: "power3.out" });
-            gsap.from("main", { duration: 0.8, y: 30, opacity: 0, ease: "power3.out", delay: 0.2 });
+            // GSAP Entrance
+            gsap.from("nav", { duration: 0.6, y: -30, opacity: 0, ease: "power3.out" });
+            gsap.from("aside", { duration: 0.6, x: -30, opacity: 0, ease: "power3.out" });
+            gsap.from("main", { duration: 0.6, y: 20, opacity: 0, ease: "power3.out", delay: 0.1 });
 
-            triggerNotification('Identity Locked', 'A.U.R.O.R.A Secure Identity validated. Welcome back, Creator.');
+            triggerNotification('Security Lock Active', 'Verified Cosmic Identity handshake success.');
         }
 
         function handleSignup() {
             const name = document.getElementById('signup-name').value || 'New Creator';
             const username = document.getElementById('signup-username').value || 'explorer';
             
-            // Update Profile Card State dynamically
             currentUserId = username;
             document.getElementById('profile-name').innerText = name;
             document.getElementById('profile-handle').innerText = '@' + username;
@@ -1267,56 +1212,50 @@
             triggerNotification('Session Severed', 'Successfully signed out from your sphere node.');
         }
 
-        // Router State Handler (Switches Tabs inside single viewport)
         function switchTab(tabId) {
             activeTab = tabId;
 
-            // Hide all tab views with immediate effect
+            // Hide tabs
             document.querySelectorAll('.app-tab').forEach(tab => tab.classList.add('hidden'));
             
-            // Display targeted tab
             const activeTabElement = document.getElementById(`tab-${tabId}`);
             if (activeTabElement) {
                 activeTabElement.classList.remove('hidden');
-                // Soft entry animation
-                gsap.fromTo(activeTabElement, { opacity: 0, y: 15 }, { duration: 0.4, opacity: 1, y: 0, ease: "power2.out" });
+                gsap.fromTo(activeTabElement, { opacity: 0, y: 10 }, { duration: 0.3, opacity: 1, y: 0, ease: "power2.out" });
             }
 
-            // Sync navigation highlights
+            // Navigation highlight mapping
             document.querySelectorAll('.app-nav-btn').forEach(btn => {
-                btn.className = "app-nav-btn w-full px-4 py-3.5 rounded-xl font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent";
+                btn.className = "app-nav-btn w-full px-4 py-3 rounded-lg font-semibold flex items-center gap-4 text-slate-400 hover:text-white hover:bg-slate-900/50 transition-all border-l-4 border-transparent";
             });
 
-            // Find current tab navigation elements to highlight
             const targetNavBtn = Array.from(document.querySelectorAll('.app-nav-btn')).find(btn => btn.innerText.toLowerCase().includes(tabId));
             if (targetNavBtn) {
-                targetNavBtn.className = "app-nav-btn w-full px-4 py-3.5 rounded-xl font-semibold flex items-center gap-4 bg-gradient-to-r from-purple-600/20 to-cyan-500/10 border-l-4 border-purple-500 text-purple-300 hover:bg-slate-800/50 transition-all";
+                targetNavBtn.className = "app-nav-btn w-full px-4 py-3 rounded-lg font-semibold flex items-center gap-4 bg-gradient-to-r from-purple-600/20 to-cyan-500/10 border-l-4 border-purple-500 text-purple-300 hover:bg-slate-900/50 transition-all";
             }
 
-            // Mobile highlights sync
+            // Mobile sync
             document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
                 btn.classList.replace('text-purple-400', 'text-slate-500');
             });
             const mobBtns = document.querySelectorAll('.mobile-nav-btn');
             const mapIndex = { 'feed': 0, 'explore': 1, 'reels': 2, 'chat': 3, 'ai': 4 };
-            if (mapIndex[tabId] !== undefined) {
+            if (mapIndex[tabId] !== undefined && mobBtns[mapIndex[tabId]]) {
                 mobBtns[mapIndex[tabId]].classList.replace('text-slate-500', 'text-purple-400');
             }
 
-            // Perform auxiliary hooks per tab switch
             if (tabId === 'chat') {
                 if (!activeChatUserId) {
-                    openDirectChat('clara_sterling'); // Default open first chat
+                    openDirectChat('clara_sterling');
                 }
             } else if (tabId === 'reels') {
                 renderReelContent();
             }
         }
 
-        // Stories Segment Builder
         function buildStoriesTrack() {
             const track = document.getElementById('stories-track');
-            // Keep the Create Story item, clear siblings
+            if (!track) return;
             while (track.children.length > 1) {
                 track.removeChild(track.lastChild);
             }
@@ -1326,16 +1265,15 @@
                 card.className = "flex flex-col items-center shrink-0 cursor-pointer group";
                 card.onclick = () => openStoryView(index);
                 card.innerHTML = `
-                    <div class="w-16 h-16 rounded-full p-[3px] bg-gradient-to-tr from-purple-500 via-pink-500 to-cyan-400 relative mb-1 group-hover:scale-105 transition-all">
-                        <img src="${st.media}" onerror="handleImgError(this)" class="w-full h-full rounded-full object-cover border-2 border-brand-dark" alt="Story">
+                    <div class="w-14 h-14 rounded-full p-[2px] bg-gradient-to-tr from-purple-500 to-cyan-400 relative mb-1 group-hover:scale-105 transition-all">
+                        <img src="${st.media}" onerror="handleImgError(this)" class="w-full h-full rounded-full object-cover border-2 border-slate-950" alt="Story">
                     </div>
-                    <span class="text-[10px] font-semibold text-slate-300">${st.name}</span>
+                    <span class="text-[9px] font-semibold text-slate-300">${st.name}</span>
                 `;
                 track.appendChild(card);
             });
         }
 
-        // Stories View Overlay Controller
         function openStoryView(index = 0) {
             activeStoryIndex = index;
             const data = mockStories[index];
@@ -1346,7 +1284,6 @@
             document.getElementById('story-viewer-name').innerText = data.name;
             document.getElementById('story-viewer-media').src = data.media;
 
-            // Reset progress meter bar
             const bar = document.getElementById('story-progress-bar');
             bar.style.width = '0%';
             
@@ -1358,14 +1295,13 @@
                 bar.style.width = progress + '%';
                 if (progress >= 100) {
                     clearInterval(currentStoryTimer);
-                    // Move to next story or close if last
                     if (activeStoryIndex < mockStories.length - 1) {
                         openStoryView(activeStoryIndex + 1);
                     } else {
                         closeStoryView();
                     }
                 }
-            }, 100); // 5 Seconds total duration (100 ticks of 50ms)
+            }, 80);
         }
 
         function closeStoryView() {
@@ -1373,44 +1309,20 @@
             document.getElementById('story-overlay').classList.add('hidden');
         }
 
-        function createNewStory() {
-            // Simulated upload process with prompt feedback
-            triggerNotification('Moment Camera', 'Direct hardware link simulation started. Select mock moments.');
-            const fileUrl = prompt("Enter simulated media URL for your story (Unsplash / Picsum links work perfectly):", "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80");
-            if (fileUrl) {
-                mockStories.unshift({
-                    userId: 'selena_universe',
-                    name: 'My Story',
-                    media: fileUrl
-                });
-                buildStoriesTrack();
-                triggerNotification('Moment broadcasted', 'Your dimensions synced successfully for 24 cycles.');
-            }
-        }
-
-        function sendStoryReply() {
-            const text = document.getElementById('story-reply').value;
-            if (!text) return;
-            document.getElementById('story-reply').value = '';
-            closeStoryView();
-            triggerNotification('Reply Sent', 'Direct Transmission encrypted and forwarded instantly.');
-        }
-
-        // Posts Management / Feed Creation Engines
         function buildFeedPosts() {
             const container = document.getElementById('feed-posts-container');
+            if (!container) return;
             container.innerHTML = '';
 
             mockPosts.forEach(post => {
                 const author = mockUsers.find(u => u.id === post.authorId) || mockUsers[0];
                 const card = document.createElement('div');
-                card.className = "glass rounded-2xl p-4 md:p-6 border border-white/5 space-y-4 hover:border-purple-500/20 transition-all";
+                card.className = "glass rounded-xl p-4 md:p-5 border border-white/5 space-y-4 hover:border-purple-500/10 transition-all";
                 
-                // Comments payload mock render
                 let commentsHtml = '';
                 post.comments.forEach(c => {
                     commentsHtml += `
-                        <div class="flex items-start gap-2 text-xs bg-slate-900/60 p-2.5 rounded-xl border border-white/5">
+                        <div class="flex items-start gap-2 text-xs bg-slate-950/60 p-2.5 rounded-lg border border-white/5">
                             <span class="font-bold text-purple-300 shrink-0">${c.author}:</span>
                             <span class="text-slate-300">${c.text}</span>
                         </div>
@@ -1418,37 +1330,32 @@
                 });
 
                 card.innerHTML = `
-                    <!-- Author header meta -->
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-3">
-                            <img src="${author.avatar}" onerror="handleImgError(this)" alt="Author" class="w-10 h-10 rounded-full object-cover border border-white/10">
+                            <img src="${author.avatar}" onerror="handleImgError(this)" alt="Author" class="w-9 h-9 rounded-full object-cover border border-white/5">
                             <div>
                                 <div class="flex items-center gap-1.5">
                                     <span class="font-bold text-xs hover:underline cursor-pointer" onclick="viewUserModal('${author.id}')">${author.name}</span>
                                     <i class="fa-solid fa-circle-check text-[10px] text-purple-400"></i>
                                 </div>
-                                <span class="text-[9px] text-slate-400 font-mono">Quantum Broadcast node</span>
+                                <span class="text-[9px] text-slate-500 font-mono">Transmission node</span>
                             </div>
                         </div>
                         <div class="flex items-center gap-2">
                             ${post.pinned ? '<span class="text-[9px] font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded-full border border-purple-500/20"><i class="fa-solid fa-thumbtack mr-1"></i> Pinned</span>' : ''}
-                            <button class="text-slate-400 hover:text-white" onclick="openPostMenu(${post.id})"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            <button class="text-slate-400 hover:text-white text-xs" onclick="openPostMenu(${post.id})"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                         </div>
                     </div>
 
-                    <!-- Post Body Description -->
                     <p class="text-xs md:text-sm text-slate-200 leading-relaxed">${post.text}</p>
 
-                    <!-- Medium Integration Visual Frame -->
                     ${post.image ? `
-                    <div class="rounded-xl overflow-hidden bg-slate-900 border border-white/10 relative group max-h-96">
-                        <img src="${post.image}" onerror="handleImgError(this)" class="w-full h-full object-cover group-hover:scale-[1.02] transition-all duration-700" alt="Post graphic" loading="lazy">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+                    <div class="rounded-lg overflow-hidden bg-slate-950 border border-white/5 relative group max-h-96">
+                        <img src="${post.image}" onerror="handleImgError(this)" class="w-full h-full object-cover group-hover:scale-[1.01] transition-all duration-500" alt="Post graphic" loading="lazy">
                     </div>
                     ` : ''}
 
-                    <!-- Social Engagements Interactive buttons -->
-                    <div class="flex items-center justify-between border-t border-b border-white/5 py-2.5 text-xs text-slate-400">
+                    <div class="flex items-center justify-between border-t border-b border-white/5 py-2 text-xs text-slate-400">
                         <button onclick="togglePostLike(${post.id})" class="hover:text-pink-500 transition-colors flex items-center gap-1.5 ${post.loved ? 'text-pink-500 font-bold' : ''}">
                             <i class="${post.loved ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
                             <span>${post.likes + (post.loved ? 1 : 0)} Likes</span>
@@ -1463,18 +1370,17 @@
                         </button>
                         <button onclick="sharePostTransmission(${post.id})" class="hover:text-cyan-400 transition-colors flex items-center gap-1.5">
                             <i class="fa-solid fa-share-nodes"></i>
-                            <span>Route Link</span>
+                            <span>Share</span>
                         </button>
                     </div>
 
-                    <!-- Post Active Feedbacks & Comment section -->
-                    <div class="space-y-2 pt-2">
+                    <div class="space-y-2 pt-1">
                         <div class="space-y-2 max-h-36 overflow-y-auto no-scrollbar" id="post-comments-track-${post.id}">
                             ${commentsHtml}
                         </div>
                         <div class="flex gap-2 items-center mt-2">
-                            <input type="text" id="post-comment-input-${post.id}" placeholder="Type cosmic comment..." onkeydown="handleCommentSubmitEnter(event, ${post.id})" class="w-full py-2 px-3 bg-slate-900 border border-white/5 rounded-lg text-xs outline-none focus:border-purple-500 text-white">
-                            <button onclick="submitPostComment(${post.id})" class="px-3 py-2 bg-slate-800 hover:bg-slate-750 text-xs rounded-lg font-bold text-slate-300">Reply</button>
+                            <input type="text" id="post-comment-input-${post.id}" placeholder="Type cosmic comment..." onkeydown="handleCommentSubmitEnter(event, ${post.id})" class="w-full py-1.5 px-3 bg-slate-950 border border-white/5 rounded-lg text-xs outline-none focus:border-purple-500 text-white">
+                            <button onclick="submitPostComment(${post.id})" class="px-3 py-1.5 bg-slate-900 hover:bg-slate-800 text-xs rounded-lg font-bold text-slate-300">Reply</button>
                         </div>
                     </div>
                 `;
@@ -1482,20 +1388,19 @@
             });
         }
 
-        // Dropdown actions overlay modal controls
         function openPostMenu(postId) {
             const post = mockPosts.find(p => p.id === postId);
             if (!post) return;
             document.getElementById('menu-active-post-id').value = postId;
             document.getElementById('menu-pin-text').innerText = post.pinned ? 'Unpin Broadcast' : 'Pin Broadcast';
             document.getElementById('post-menu-modal').classList.remove('hidden');
-            gsap.fromTo("#post-menu-modal .glass-premium", { scale: 0.9, opacity: 0 }, { duration: 0.3, scale: 1, opacity: 1, ease: "back.out(1.5)" });
+            gsap.fromTo("#post-menu-modal .glass-premium", { scale: 0.95, opacity: 0 }, { duration: 0.25, scale: 1, opacity: 1, ease: "power2.out" });
         }
 
         function hidePostMenu() {
             gsap.to("#post-menu-modal .glass-premium", {
                 duration: 0.2,
-                scale: 0.9,
+                scale: 0.95,
                 opacity: 0,
                 onComplete: () => {
                     document.getElementById('post-menu-modal').classList.add('hidden');
@@ -1535,9 +1440,9 @@
             const post = mockPosts.find(p => p.id === postId);
             if (post) {
                 const alternatives = [
-                    `Procedurally optimized sequence: ${post.text} ✨ Synthesizing raw cosmic power!`,
-                    `Beautified via A.U.R.O.R.A: "${post.text}" 🔮 Leveling up digital aesthetics!`,
-                    `System core rewrite: ${post.text} 🚀 Sub-second engagement index boosted!`
+                    `Procedurally optimized sequence: ${post.text} ✨ Synthesizing cosmic node energy!`,
+                    `Beautified via A.U.R.O.R.A: "${post.text}" 🔮 Premium dark ambient style rewrite.`,
+                    `System core override: ${post.text} 🚀 Sub-second engagement optimization active!`
                 ];
                 post.text = alternatives[Math.floor(Math.random() * alternatives.length)];
                 localStorage.setItem('posts_db', JSON.stringify(mockPosts));
@@ -1622,7 +1527,6 @@
             mockPosts.unshift(newPost);
             localStorage.setItem('posts_db', JSON.stringify(mockPosts));
 
-            // Clear input context details
             document.getElementById('create-post-input').value = '';
             document.getElementById('create-post-input').removeAttribute('data-img');
 
@@ -1631,29 +1535,9 @@
             triggerNotification('Post Broadcaster', 'Transmission broadcasted across modern dark grids successfully.');
         }
 
-        function triggerMockUpload(type) {
-            // Simulated upload file logic using public assets URLs
-            const randomSample = [
-                'https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80'
-            ];
-            const choice = randomSample[Math.floor(Math.random() * randomSample.length)];
-            
-            document.getElementById('create-post-input').setAttribute('data-img', choice);
-            triggerNotification('Media Linked', `${type} simulated mapping loaded. Ready to broadcast.`);
-        }
-
-        function sharePostTransmission(postId) {
-            const simulatedUrl = `https://socialsphere.io/transmissions/post/${postId}`;
-            document.execCommand('copy'); // Fallback standard clipboard
-            triggerNotification('Quantum Link Copied', `Hash matched: ${simulatedUrl}`);
-        }
-
-        // Explore Page Grid Generator
         function buildExploreMasonry() {
             const masonry = document.getElementById('explore-masonry');
+            if (!masonry) return;
             masonry.innerHTML = '';
 
             const exploreImages = [
@@ -1667,35 +1551,35 @@
 
             exploreImages.forEach((src, idx) => {
                 const imgCard = document.createElement('div');
-                imgCard.className = "relative rounded-xl overflow-hidden group cursor-pointer aspect-square bg-slate-900 border border-white/5";
+                imgCard.className = "relative rounded-lg overflow-hidden group cursor-pointer aspect-square bg-slate-950 border border-white/5";
                 imgCard.innerHTML = `
-                    <img src="${src}" onerror="handleImgError(this)" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" alt="Explore Space" loading="lazy">
+                    <img src="${src}" onerror="handleImgError(this)" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-500" alt="Explore Space" loading="lazy">
                     <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex flex-col justify-end p-3 transition-all">
-                        <span class="text-[10px] font-bold text-purple-400">EXPLORE HUB</span>
-                        <h6 class="text-xs font-bold text-white mt-0.5">Procedural Landscape Node #${idx + 1}</h6>
+                        <span class="text-[9px] font-bold text-purple-400">EXPLORE HUB</span>
+                        <h6 class="text-[11px] font-bold text-white mt-0.5">Procedural Landscape Node #${idx + 1}</h6>
                     </div>
                 `;
                 masonry.appendChild(imgCard);
             });
         }
 
-        // Suggested Creator directory generator
         function buildSuggestedCreators() {
             const container = document.getElementById('suggested-users-list');
+            if (!container) return;
             container.innerHTML = '';
 
             mockUsers.filter(u => u.id !== 'selena_universe').forEach(user => {
                 const card = document.createElement('div');
-                card.className = "flex items-center justify-between p-2 rounded-xl hover:bg-white/5 transition-all";
+                card.className = "flex items-center justify-between p-2 rounded-lg hover:bg-white/5 transition-all";
                 card.innerHTML = `
                     <div class="flex items-center gap-3 cursor-pointer" onclick="viewUserModal('${user.id}')">
-                        <img src="${user.avatar}" onerror="handleImgError(this)" class="w-9 h-9 rounded-full object-cover" alt="Explorer">
+                        <img src="${user.avatar}" onerror="handleImgError(this)" class="w-8.5 h-8.5 rounded-full object-cover" alt="Explorer">
                         <div>
                             <div class="flex items-center gap-1">
                                 <span class="font-bold text-xs text-white hover:underline">${user.name}</span>
                                 <i class="fa-solid fa-circle-check text-[9px] text-purple-400"></i>
                             </div>
-                            <span class="text-[9px] text-slate-400 block truncate max-w-[130px]">${user.bio}</span>
+                            <span class="text-[9px] text-slate-500 block truncate max-w-[130px]">${user.bio}</span>
                         </div>
                     </div>
                     <button onclick="handleFollowToggle(this)" class="px-3 py-1 bg-purple-600 hover:bg-purple-500 text-[10px] font-bold rounded-full text-white transition-all">Connect</button>
@@ -1704,20 +1588,9 @@
             });
         }
 
-        function handleFollowToggle(btn) {
-            if (btn.innerText === 'Connect') {
-                btn.innerText = 'Connected';
-                btn.className = "px-3 py-1 bg-slate-800 text-[10px] font-bold rounded-full text-slate-400 transition-all";
-                triggerNotification('Connection Linked', 'Added to your cosmic stream pipeline.');
-            } else {
-                btn.innerText = 'Connect';
-                btn.className = "px-3 py-1 bg-purple-600 hover:bg-purple-500 text-[10px] font-bold rounded-full text-white transition-all";
-            }
-        }
-
-        // Trending Hashtags Feed segment
         function buildTrendingTags() {
             const list = document.getElementById('trending-hashtags-list');
+            if (!list) return;
             list.innerHTML = '';
 
             const mockTags = [
@@ -1738,84 +1611,26 @@
                 };
                 node.innerHTML = `
                     <span class="font-bold text-slate-300 hover:text-purple-400">${t.tag}</span>
-                    <span class="text-[9px] text-slate-500 font-mono bg-slate-900 px-2 py-0.5 rounded">${t.count}</span>
+                    <span class="text-[9px] text-slate-500 font-mono bg-slate-950 px-2 py-0.5 rounded">${t.count}</span>
                 `;
                 list.appendChild(node);
             });
         }
 
-        // Dynamic Reels Swiper Mechanics
-        function renderReelContent() {
-            const data = mockReels[reelsIndex];
-            if (!data) return;
-
-            document.getElementById('reel-visual-frame').src = data.image;
-            document.getElementById('reel-author-avatar').src = data.avatar;
-            document.getElementById('reel-author-name').innerText = data.author;
-            document.getElementById('reel-description').innerText = data.desc;
-            document.getElementById('reel-music').innerText = data.music;
-            document.getElementById('reel-like-count').innerText = data.likes;
-
-            // Update Reel Like state glow
-            const likeBtn = document.getElementById('reel-like-btn');
-            if (data.liked) {
-                likeBtn.className = "w-11 h-11 rounded-full glass flex justify-center items-center text-lg bg-pink-600/30 text-pink-500";
-            } else {
-                likeBtn.className = "w-11 h-11 rounded-full glass flex justify-center items-center text-lg hover:bg-purple-600 text-slate-300";
-            }
-        }
-
-        function toggleReelLike() {
-            const data = mockReels[reelsIndex];
-            data.liked = !data.liked;
-            renderReelContent();
-            if (data.liked) {
-                triggerNotification('Reel Appreciated', 'Simulated heart recorded.');
-            }
-        }
-
-        function openReelComments() {
-            triggerNotification('Reels Comments Locked', 'This encrypted discussion thread is verified via secure peer protocols.');
-        }
-
-        function navigateReels(dir) {
-            reelsIndex += dir;
-            if (reelsIndex < 0) reelsIndex = mockReels.length - 1;
-            if (reelsIndex >= mockReels.length) reelsIndex = 0;
-            
-            // GSAP Swipe Transition effect
-            gsap.fromTo("#reels-video-container", { y: dir * 100, opacity: 0.5 }, { duration: 0.4, y: 0, opacity: 1, ease: "power2.out" });
-            renderReelContent();
-        }
-
-        function muteReel() {
-            const icon = document.getElementById('reel-volume-icon');
-            if (icon.classList.contains('fa-volume-high')) {
-                icon.className = "fa-solid fa-volume-xmark text-pink-500";
-                triggerNotification('Audio Muted', 'Atmospheric space sound dampened.');
-            } else {
-                icon.className = "fa-solid fa-volume-high";
-            }
-        }
-
-        function shareReel() {
-            triggerNotification('Broadcast Shared', 'Dynamic mapping copied to device buffer.');
-        }
-
-        // Messenger / Chat System Logic
         function buildChatContacts() {
             const container = document.getElementById('chat-contact-list');
+            if (!container) return;
             container.innerHTML = '';
 
             mockUsers.filter(u => u.id !== 'selena_universe').forEach(user => {
                 const node = document.createElement('div');
-                node.className = "flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/5 transition-all border border-transparent";
+                node.className = "flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-white/5 transition-all border border-transparent";
                 node.onclick = () => openDirectChat(user.id);
                 node.id = `chat-contact-${user.id}`;
                 node.innerHTML = `
                     <div class="relative shrink-0">
-                        <img src="${user.avatar}" onerror="handleImgError(this)" class="w-10 h-10 rounded-full object-cover border border-purple-500/20" alt="Contact">
-                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-brand-dark rounded-full"></span>
+                        <img src="${user.avatar}" onerror="handleImgError(this)" class="w-9 h-9 rounded-full object-cover border border-purple-500/10" alt="Contact">
+                        <span class="absolute bottom-0 right-0 w-2 h-2 bg-green-500 border-2 border-slate-950 rounded-full"></span>
                     </div>
                     <div class="flex-grow text-left">
                         <div class="flex justify-between items-center">
@@ -1834,26 +1649,24 @@
             const user = mockUsers.find(u => u.id === userId);
             if (!user) return;
 
-            // Highlight chosen node
             document.querySelectorAll('#chat-contact-list > div').forEach(node => {
-                node.className = "flex items-center gap-3 p-3 rounded-xl cursor-pointer hover:bg-white/5 transition-all border border-transparent";
+                node.className = "flex items-center gap-3 p-3 rounded-lg cursor-pointer hover:bg-white/5 transition-all border border-transparent";
             });
             const activeContactNode = document.getElementById(`chat-contact-${userId}`);
             if (activeContactNode) {
-                activeContactNode.className = "flex items-center gap-3 p-3 rounded-xl cursor-pointer bg-purple-600/15 hover:bg-purple-600/20 border-l-4 border-purple-500 transition-all";
+                activeContactNode.className = "flex items-center gap-3 p-3 rounded-lg cursor-pointer bg-purple-600/15 hover:bg-purple-600/20 border-l-4 border-purple-500 transition-all";
             }
 
-            // Sync Header UI metadata
             document.getElementById('active-chat-avatar').src = user.avatar;
             document.getElementById('active-chat-name').innerText = user.name;
             document.getElementById('active-chat-status').innerText = 'Secured via SSL';
 
-            // Render Message Track history
             renderChatHistory();
         }
 
         function renderChatHistory() {
             const track = document.getElementById('chat-messages-track');
+            if (!track) return;
             track.innerHTML = '';
 
             const history = mockChats[activeChatUserId] || [];
@@ -1862,7 +1675,7 @@
                 const cloud = document.createElement('div');
                 cloud.className = `flex ${isMe ? 'justify-end' : 'justify-start'} w-full text-left`;
                 cloud.innerHTML = `
-                    <div class="max-w-[70%] p-3 rounded-2xl text-xs ${isMe ? 'bg-purple-600 text-white rounded-tr-none border border-purple-500/20' : 'bg-slate-900 border border-white/5 text-slate-200 rounded-tl-none'}">
+                    <div class="max-w-[70%] p-3 rounded-xl text-xs ${isMe ? 'bg-purple-600 text-white rounded-tr-none border border-purple-500/10' : 'bg-slate-900 border border-white/5 text-slate-200 rounded-tl-none'}">
                         <p class="leading-relaxed">${msg.text}</p>
                         <span class="block text-[8px] text-slate-400 mt-1 text-right font-mono">11:09 AM</span>
                     </div>
@@ -1870,104 +1683,12 @@
                 track.appendChild(cloud);
             });
 
-            // Keep scrolled to bottom
             track.scrollTop = track.scrollHeight;
         }
 
-        function handleChatSendEnter(event) {
-            if (event.key === 'Enter') {
-                sendChatMessage();
-            }
-        }
-
-        function sendChatMessage() {
-            const input = document.getElementById('chat-input');
-            const txt = input.value.trim();
-            if (!txt || !activeChatUserId) return;
-
-            // Push state
-            if (!mockChats[activeChatUserId]) mockChats[activeChatUserId] = [];
-            mockChats[activeChatUserId].push({
-                sender: 'selena_universe',
-                text: txt
-            });
-
-            // Update local indicator
-            const lastMsgElement = document.getElementById(`chat-last-msg-${activeChatUserId}`);
-            if (lastMsgElement) lastMsgElement.innerText = txt;
-
-            input.value = '';
-            renderChatHistory();
-
-            // Simulate AI reply delay feedback loop
-            simulateChatPartnerReply();
-        }
-
-        function simulateChatPartnerReply() {
-            const statusNode = document.getElementById('active-chat-status');
-            statusNode.innerText = 'typing...';
-            document.getElementById('active-chat-status-dot').className = "w-2 h-2 rounded-full bg-yellow-500";
-
-            setTimeout(() => {
-                const replies = [
-                    "This sounds highly logical. I am mapping out the dynamic design architecture details right now.",
-                    "Excellent progress Selena. Let us coordinate on the live creator dashboard deployment.",
-                    "Interesting paradigm. The quantum gradients inside the Dark Ambient configuration render beautifully.",
-                    "Let's sync up for that spatial stream recording session very soon!"
-                ];
-                const replyText = replies[Math.floor(Math.random() * replies.length)];
-
-                mockChats[activeChatUserId].push({
-                    sender: activeChatUserId,
-                    text: replyText
-                });
-
-                const lastMsgElement = document.getElementById(`chat-last-msg-${activeChatUserId}`);
-                if (lastMsgElement) lastMsgElement.innerText = replyText;
-
-                statusNode.innerText = 'Online';
-                document.getElementById('active-chat-status-dot').className = "w-2 h-2 rounded-full bg-green-500";
-
-                renderChatHistory();
-                triggerNotification('Transmission Received', `New encrypted response from ${mockUsers.find(u => u.id === activeChatUserId).name}`);
-            }, 2500);
-        }
-
-        // Simulated Real-Time Call Screens (Voice/Video overlay HUD)
-        function triggerCallUI(type) {
-            const user = mockUsers.find(u => u.id === activeChatUserId);
-            if (!user) return;
-
-            document.getElementById('call-overlay').classList.remove('hidden');
-            document.getElementById('call-avatar').src = user.avatar;
-            document.getElementById('call-title').innerText = `Calling ${user.name}`;
-            document.getElementById('call-type').innerText = `Establishing Secure ${type.toUpperCase()} Channel...`;
-
-            if (type === 'Video') {
-                document.getElementById('call-video-screen').classList.remove('hidden');
-            } else {
-                document.getElementById('call-video-screen').classList.add('hidden');
-            }
-
-            // Automate incoming call connect preview mock
-            setTimeout(() => {
-                document.getElementById('call-type').innerText = 'Connected - Cryptographic tunnel verified';
-                document.getElementById('call-type').className = "text-xs uppercase tracking-wider text-green-400 animate-pulse";
-            }, 3000);
-        }
-
-        function declineCall() {
-            document.getElementById('call-overlay').classList.add('hidden');
-            triggerNotification('Signal Severed', 'Call sequence terminated gracefully.');
-        }
-
-        function toggleCallMute() {
-            triggerNotification('Audio Command', 'Mute/unmute state updated.');
-        }
-
-        // Cosmic Profile Gallery setup
         function buildProfileGallery() {
             const grid = document.getElementById('profile-posts-grid');
+            if (!grid) return;
             grid.innerHTML = '';
 
             const profileImages = [
@@ -1981,7 +1702,7 @@
 
             profileImages.forEach((img, index) => {
                 const block = document.createElement('div');
-                block.className = "relative rounded-xl overflow-hidden aspect-square cursor-pointer group bg-slate-900 border border-white/5";
+                block.className = "relative rounded-lg overflow-hidden aspect-square cursor-pointer group bg-slate-950 border border-white/5";
                 block.innerHTML = `
                     <img src="${img}" onerror="handleImgError(this)" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300" alt="My Creation">
                     <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-4 transition-all">
@@ -1993,162 +1714,11 @@
             });
         }
 
-        // AI Assistant Magic Studio Mechanics
-        function aiOptimiseCaption() {
-            const input = document.getElementById('create-post-input');
-            if (!input) return;
-            const originalText = input.value.trim() || 'Exciting day in the virtual universe!';
-            const list = [
-                `Chasing cosmic realities: "${originalText}" ✨ Broadcasted via SocialSphere.`,
-                `Procedural neon aesthetics checked! 🔮 Designing systems around: "${originalText}"`,
-                `Syncing raw creative energy nodes: "${originalText}" 🚀 #nextgen #cyberpunk`
-            ];
-            input.value = list[Math.floor(Math.random() * list.length)];
-            triggerNotification('AI Post Assist', 'Polished broadcast draft content successfully.');
-        }
-
-        function generateAICaption() {
-            const topic = document.getElementById('ai-caption-topic').value || 'Sunsets';
-            const output = document.getElementById('ai-caption-output');
-            
-            const list = [
-                `Chasing deep celestial rays across the synthetic horizons. Let the cosmic flare ignite your vision! ✨🌅 #${topic.replace(/\s+/g, '')}`,
-                `System check: Optimal light scattering registered. The aesthetic glow of this moment is procedurally generated. 🤖🌌 #${topic.replace(/\s+/g, '')}`,
-                `Designing next-gen memories inside the virtual nodes. Keep the vibrations real, always. 🔥 #${topic.replace(/\s+/g, '')}`
-            ];
-
-            output.classList.remove('hidden');
-            output.innerText = list[Math.floor(Math.random() * list.length)];
-            
-            // Increment Digital Coin Reward dynamically
-            addSphereCoins(15);
-            triggerNotification('AI Co-Pilot Content Crafted', 'Granted +15 SPHERE Coins into your Creator Wallet!');
-        }
-
-        function generateAITags() {
-            const topic = document.getElementById('ai-tags-topic').value || 'design';
-            const output = document.getElementById('ai-tags-output');
-            
-            output.classList.remove('hidden');
-            output.innerText = `#${topic.replace(/\s+/g, '')} #cybermorphism #proceduralArt #socialnode #generativefuture #glassmorphicvibe #nextlevel`;
-            
-            addSphereCoins(10);
-            triggerNotification('Tags Formulated', 'Granted +10 SPHERE Coins!');
-        }
-
-        function askAIAssistant() {
-            const inp = document.getElementById('ai-assistant-input');
-            const txt = inp.value.trim();
-            if (!txt) return;
-
-            const term = document.getElementById('ai-assistant-terminal');
-            
-            // Append user prompt
-            term.innerHTML += `<div class="text-slate-300 font-bold mt-2">Selena: ${txt}</div>`;
-            inp.value = '';
-
-            // Loading state
-            term.innerHTML += `<div class="text-cyan-400 font-mono italic" id="ai-loading">Analysing engage metrics...</div>`;
-            term.scrollTop = term.scrollHeight;
-
-            setTimeout(() => {
-                document.getElementById('ai-loading').remove();
-                
-                const answers = [
-                    "To optimize your engagement node pipeline, post cinematic vertical Reels around 8:00 PM EST utilizing procedural dark gradient thumbnails. This boosts the index by up to 24%.",
-                    "A.U.R.O.R.A analysis dictates your visual styling works perfectly with glassmorphism highlights. Try tagging #nextgen on your next image broadcast.",
-                    "Your core subscriber metrics are growing continuously. I recommend initiating a live-stream simulated reward giveaway sequence tomorrow."
-                ];
-
-                term.innerHTML += `<div class="text-purple-300 font-mono mt-1">AURORA Core: ${answers[Math.floor(Math.random() * answers.length)]}</div>`;
-                term.scrollTop = term.scrollHeight;
-                triggerNotification('AI Advice Synced', 'Check generative feedback on metrics terminal.');
-            }, 1800);
-        }
-
-        // Creator Rewards Spinner Simulator
-        function spinRewardWheel() {
-            const wonAmount = [100, 250, 50, 500, 1000][Math.floor(Math.random()*5)];
-            addSphereCoins(wonAmount);
-            triggerNotification('Cosmic Bonus Unlocked', `Successfully rolling reward wheel: Granted +${wonAmount} SPHERE Coins!`);
-        }
-
-        function addSphereCoins(amount) {
-            walletCoins += amount;
-            document.getElementById('wallet-balance').innerText = walletCoins.toLocaleString();
-            
-            // Glow effect on wallet
-            const val = document.getElementById('wallet-balance').parentElement;
-            val.className = "cursor-pointer flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-500/20 border border-yellow-500/40 text-yellow-400 text-xs font-black animate-pulse";
-            setTimeout(() => {
-                val.className = "cursor-pointer hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs font-bold";
-            }, 2000);
-        }
-
-        // Global Interactive Popups / Toast Utilities
-        function triggerNotification(title, desc, icon = "fa-bell") {
-            const prompt = document.getElementById('custom-prompt');
-            document.getElementById('prompt-icon').className = `fa-solid ${icon}`;
-            document.getElementById('prompt-title').innerText = title;
-            document.getElementById('prompt-desc').innerText = desc;
-
-            // Slide in with smooth CSS keyframes
-            prompt.classList.remove('translate-y-24', 'opacity-0');
-            prompt.classList.add('translate-y-0', 'opacity-100');
-
-            setTimeout(() => {
-                prompt.classList.add('translate-y-24', 'opacity-0');
-                prompt.classList.remove('translate-y-0', 'opacity-100');
-            }, 4000);
-
-            // Populate system logs
-            const logs = document.getElementById('admin-log-box');
-            if (logs) {
-                const now = new Date();
-                const stamp = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
-                logs.innerHTML += `<div>[EVENT] ${stamp} - ${title}: ${desc}</div>`;
-                logs.scrollTop = logs.scrollHeight;
-            }
-
-            // Sync dynamic lists inside Navbar Notification tray
-            const tray = document.getElementById('notification-list');
-            if (tray) {
-                const card = document.createElement('div');
-                card.className = "p-2 bg-slate-900 rounded-lg border border-white/5 space-y-1 text-slate-200 text-[10px]";
-                card.innerHTML = `
-                    <div class="flex justify-between items-center text-[9px] font-bold text-purple-400 uppercase">
-                        <span>${title}</span>
-                        <span>Just Now</span>
-                    </div>
-                    <p>${desc}</p>
-                `;
-                tray.insertBefore(card, tray.firstChild);
-            }
-        }
-
-        function toggleNotificationDropdown() {
-            const drop = document.getElementById('notification-dropdown');
-            drop.classList.toggle('hidden');
-        }
-
-        // Voice Search Simulated Trigger
-        function triggerVoiceSearch() {
-            const icon = document.getElementById('voice-icon');
-            icon.className = "fa-solid fa-microphone-lines text-pink-500 animate-pulse";
-            triggerNotification('Audio Signal Detected', 'Simulating speech-to-text recognition models...');
-
-            setTimeout(() => {
-                icon.className = "fa-solid fa-microphone text-slate-400";
-                document.getElementById('global-search').value = "Cybernetic Design Trends";
-                switchTab('explore');
-                triggerNotification('Audio Parsed Successfully', 'Mapped query phrase: "Cybernetic Design Trends"');
-            }, 3000);
-        }
-
-        // Chart.js Configuration inside Creator Dashboard tab
         let growthChartInstance = null;
         function initializeAdminChart() {
-            const ctx = document.getElementById('admin-growth-chart').getContext('2d');
+            const canvasEl = document.getElementById('admin-growth-chart');
+            if (!canvasEl) return;
+            const ctx = canvasEl.getContext('2d');
             growthChartInstance = new Chart(ctx, {
                 type: 'line',
                 data: {
@@ -2156,11 +1726,11 @@
                     datasets: [{
                         label: 'Explorer Subscriptions',
                         data: [12000, 24000, 18000, 35000, 48000, 65000],
-                        borderColor: '#8B5CF6',
-                        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                        borderColor: '#7C3AED',
+                        backgroundColor: 'rgba(124, 58, 237, 0.05)',
                         fill: true,
                         tension: 0.4,
-                        borderWidth: 3
+                        borderWidth: 2
                     }]
                 },
                 options: {
@@ -2170,14 +1740,13 @@
                         legend: { display: false }
                     },
                     scales: {
-                        x: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94a3b8', font: { size: 9 } } },
-                        y: { grid: { color: 'rgba(255, 255, 255, 0.05)' }, ticks: { color: '#94a3b8', font: { size: 9 } } }
+                        x: { grid: { color: 'rgba(255, 255, 255, 0.03)' }, ticks: { color: '#94a3b8', font: { size: 9 } } },
+                        y: { grid: { color: 'rgba(255, 255, 255, 0.03)' }, ticks: { color: '#94a3b8', font: { size: 9 } } }
                     }
                 }
             });
         }
 
-        // Simulate random actions (likes, user joins) to make platform feel incredibly alive
         function setupSimulatedInteractions() {
             setInterval(() => {
                 if (!isAuthenticated) return;
@@ -2191,16 +1760,14 @@
                 const pick = notificationPool[Math.floor(Math.random() * notificationPool.length)];
                 triggerNotification(pick.title, pick.desc, pick.icon);
 
-                // Update simulated chart growth values
                 if (growthChartInstance) {
                     const idx = Math.floor(Math.random() * 6);
-                    growthChartInstance.data.datasets[0].data[idx] += Math.floor(Math.random() * 500);
+                    growthChartInstance.data.datasets[0].data[idx] += Math.floor(Math.random() * 300);
                     growthChartInstance.update();
                 }
-            }, 30000); // Trigger every 30 seconds
+            }, 30000);
         }
 
-        // Direct Profile Quick Settings Modal View Switch
         function showProfileEditModal() {
             switchTab('settings');
             triggerNotification('Control Switch', 'Transferred to System Controls settings panel.');
@@ -2215,7 +1782,6 @@
             if (!user) return;
             triggerNotification('Connecting Direct Nodes', `Exploring direct digital universe of ${user.name}`);
             
-            // Switch current user profile values inside Profile Tab to inspect them dynamically
             document.getElementById('profile-name').innerText = user.name;
             document.getElementById('profile-handle').innerText = '@' + user.id;
             document.getElementById('profile-avatar').src = user.avatar;
