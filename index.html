@@ -96,7 +96,7 @@
         @keyframes subtleFloat {
             0% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-10px) rotate(90deg); }
-            100% { transform: translateY(0px) rotate(180deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
         }
         .bubble-1 { animation: subtleFloat 20s ease-in-out infinite; }
         .bubble-2 { animation: subtleFloat 25s ease-in-out infinite; animation-delay: 3s; }
@@ -980,7 +980,6 @@
 
     <!-- MAIN JAVASCRIPT LOGIC -->
     <script>
-        // App State
         let isLandingPassed = false;
         let isAuthenticated = false;
         let activeTab = 'feed';
@@ -1043,7 +1042,6 @@
             el.src = 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=500&q=80';
         }
 
-        // Instant Initializer on DOM Load (Preloader Completely Removed)
         document.addEventListener('DOMContentLoaded', () => {
             const splashScreen = document.getElementById('splash-screen');
             if (splashScreen) splashScreen.remove(); // Prune completely from DOM
@@ -1309,6 +1307,28 @@
             document.getElementById('story-overlay').classList.add('hidden');
         }
 
+        function createNewStory() {
+            triggerNotification('Moment Camera', 'Direct hardware link simulation started. Select mock moments.');
+            const fileUrl = prompt("Enter simulated media URL for your story (Unsplash / Picsum links work perfectly):", "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80");
+            if (fileUrl) {
+                mockStories.unshift({
+                    userId: 'selena_universe',
+                    name: 'My Story',
+                    media: fileUrl
+                });
+                buildStoriesTrack();
+                triggerNotification('Moment broadcasted', 'Your dimensions synced successfully for 24 cycles.');
+            }
+        }
+
+        function sendStoryReply() {
+            const text = document.getElementById('story-reply').value;
+            if (!text) return;
+            document.getElementById('story-reply').value = '';
+            closeStoryView();
+            triggerNotification('Reply Sent', 'Direct Transmission encrypted and forwarded instantly.');
+        }
+
         function buildFeedPosts() {
             const container = document.getElementById('feed-posts-container');
             if (!container) return;
@@ -1535,6 +1555,25 @@
             triggerNotification('Post Broadcaster', 'Transmission broadcasted across modern dark grids successfully.');
         }
 
+        function triggerMockUpload(type) {
+            const randomSample = [
+                'https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80',
+                'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80'
+            ];
+            const choice = randomSample[Math.floor(Math.random() * randomSample.length)];
+            
+            document.getElementById('create-post-input').setAttribute('data-img', choice);
+            triggerNotification('Media Linked', `${type} simulated mapping loaded. Ready to broadcast.`);
+        }
+
+        function sharePostTransmission(postId) {
+            const simulatedUrl = `https://socialsphere.io/transmissions/post/${postId}`;
+            document.execCommand('copy');
+            triggerNotification('Quantum Link Copied', `Hash matched: ${simulatedUrl}`);
+        }
+
         function buildExploreMasonry() {
             const masonry = document.getElementById('explore-masonry');
             if (!masonry) return;
@@ -1630,7 +1669,7 @@
                 node.innerHTML = `
                     <div class="relative shrink-0">
                         <img src="${user.avatar}" onerror="handleImgError(this)" class="w-9 h-9 rounded-full object-cover border border-purple-500/10" alt="Contact">
-                        <span class="absolute bottom-0 right-0 w-2 h-2 bg-green-500 border-2 border-slate-950 rounded-full"></span>
+                        <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-slate-950 rounded-full"></span>
                     </div>
                     <div class="flex-grow text-left">
                         <div class="flex justify-between items-center">
@@ -1686,32 +1725,294 @@
             track.scrollTop = track.scrollHeight;
         }
 
-        function buildProfileGallery() {
-            const grid = document.getElementById('profile-posts-grid');
-            if (!grid) return;
-            grid.innerHTML = '';
+        function handleChatSendEnter(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
 
-            const profileImages = [
-                'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=400&q=80',
-                'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
-                'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=400&q=80',
-                'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80',
-                'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80',
-                'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=400&q=80'
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            if (!input) return;
+            const txt = input.value.trim();
+            if (!txt || !activeChatUserId) return;
+
+            if (!mockChats[activeChatUserId]) {
+                mockChats[activeChatUserId] = [];
+            }
+            mockChats[activeChatUserId].push({
+                sender: 'selena_universe',
+                text: txt
+            });
+
+            const lastMsgElement = document.getElementById(`chat-last-msg-${activeChatUserId}`);
+            if (lastMsgElement) lastMsgElement.innerText = txt;
+
+            input.value = '';
+            renderChatHistory();
+
+            simulateChatPartnerReply();
+        }
+
+        function simulateChatPartnerReply() {
+            const statusNode = document.getElementById('active-chat-status');
+            const dotNode = document.getElementById('active-chat-status-dot');
+            if (statusNode) statusNode.innerText = 'typing...';
+            if (dotNode) dotNode.className = "w-2 h-2 rounded-full bg-yellow-500";
+
+            setTimeout(() => {
+                const replies = [
+                    "This sounds highly logical. I am mapping out the dynamic design architecture details right now.",
+                    "Excellent progress Selena. Let us coordinate on the live creator dashboard deployment.",
+                    "Interesting paradigm. The quantum gradients inside the Dark Ambient configuration render beautifully.",
+                    "Let's sync up for that spatial stream recording session very soon!"
+                ];
+                const replyText = replies[Math.floor(Math.random() * replies.length)];
+
+                if (!mockChats[activeChatUserId]) {
+                    mockChats[activeChatUserId] = [];
+                }
+                mockChats[activeChatUserId].push({
+                    sender: activeChatUserId,
+                    text: replyText
+                });
+
+                const lastMsgElement = document.getElementById(`chat-last-msg-${activeChatUserId}`);
+                if (lastMsgElement) lastMsgElement.innerText = replyText;
+
+                if (statusNode) statusNode.innerText = 'Online';
+                if (dotNode) dotNode.className = "w-2 h-2 rounded-full bg-green-500";
+
+                renderChatHistory();
+                triggerNotification('Transmission Received', `New encrypted response from ${mockUsers.find(u => u.id === activeChatUserId).name}`);
+            }, 2500);
+        }
+
+        function triggerCallUI(type) {
+            const user = mockUsers.find(u => u.id === activeChatUserId);
+            if (!user) return;
+
+            document.getElementById('call-overlay').classList.remove('hidden');
+            document.getElementById('call-avatar').src = user.avatar;
+            document.getElementById('call-title').innerText = `Calling ${user.name}`;
+            document.getElementById('call-type').innerText = `Establishing Secure ${type.toUpperCase()} Channel...`;
+
+            if (type === 'Video') {
+                document.getElementById('call-video-screen').classList.remove('hidden');
+            } else {
+                document.getElementById('call-video-screen').classList.add('hidden');
+            }
+
+            setTimeout(() => {
+                document.getElementById('call-type').innerText = 'Connected - Cryptographic tunnel verified';
+                document.getElementById('call-type').className = "text-xs uppercase tracking-wider text-green-400 animate-pulse";
+            }, 3000);
+        }
+
+        function declineCall() {
+            document.getElementById('call-overlay').classList.add('hidden');
+            triggerNotification('Signal Severed', 'Call sequence terminated gracefully.');
+        }
+
+        function toggleCallMute() {
+            triggerNotification('Audio Command', 'Mute/unmute state updated.');
+        }
+
+        function renderReelContent() {
+            const data = mockReels[reelsIndex];
+            if (!data) return;
+
+            document.getElementById('reel-visual-frame').src = data.image;
+            document.getElementById('reel-author-avatar').src = data.avatar;
+            document.getElementById('reel-author-name').innerText = data.author;
+            document.getElementById('reel-description').innerText = data.desc;
+            document.getElementById('reel-music').innerText = data.music;
+            document.getElementById('reel-like-count').innerText = data.likes;
+
+            const likeBtn = document.getElementById('reel-like-btn');
+            if (data.liked) {
+                likeBtn.className = "w-11 h-11 rounded-full glass flex justify-center items-center text-lg bg-pink-600/30 text-pink-500";
+            } else {
+                likeBtn.className = "w-11 h-11 rounded-full glass flex justify-center items-center text-lg hover:bg-purple-600 text-slate-300";
+            }
+        }
+
+        function toggleReelLike() {
+            const data = mockReels[reelsIndex];
+            data.liked = !data.liked;
+            renderReelContent();
+            if (data.liked) {
+                triggerNotification('Reel Appreciated', 'Simulated heart recorded.');
+            }
+        }
+
+        function openReelComments() {
+            triggerNotification('Reels Comments Locked', 'This encrypted discussion thread is verified via secure peer protocols.');
+        }
+
+        function navigateReels(dir) {
+            reelsIndex += dir;
+            if (reelsIndex < 0) reelsIndex = mockReels.length - 1;
+            if (reelsIndex >= mockReels.length) reelsIndex = 0;
+            
+            gsap.fromTo("#reels-video-container", { y: dir * 100, opacity: 0.5 }, { duration: 0.4, y: 0, opacity: 1, ease: "power2.out" });
+            renderReelContent();
+        }
+
+        function muteReel() {
+            const icon = document.getElementById('reel-volume-icon');
+            if (icon.classList.contains('fa-volume-high')) {
+                icon.className = "fa-solid fa-volume-xmark text-pink-500";
+                triggerNotification('Audio Muted', 'Atmospheric space sound dampened.');
+            } else {
+                icon.className = "fa-solid fa-volume-high";
+            }
+        }
+
+        function shareReel() {
+            triggerNotification('Broadcast Shared', 'Dynamic mapping copied to device buffer.');
+        }
+
+        function aiOptimiseCaption() {
+            const input = document.getElementById('create-post-input');
+            if (!input) return;
+            const originalText = input.value.trim() || 'Exciting day in the virtual universe!';
+            const list = [
+                `Chasing cosmic realities: "${originalText}" ✨ Broadcasted via SocialSphere.`,
+                `Procedural neon aesthetics checked! 🔮 Designing systems around: "${originalText}"`,
+                `Syncing raw creative energy nodes: "${originalText}" 🚀 #nextgen #cyberpunk`
+            ];
+            input.value = list[Math.floor(Math.random() * list.length)];
+            triggerNotification('AI Post Assist', 'Polished broadcast draft content successfully.');
+        }
+
+        function generateAICaption() {
+            const topic = document.getElementById('ai-caption-topic').value || 'Sunsets';
+            const output = document.getElementById('ai-caption-output');
+            
+            const list = [
+                `Chasing deep celestial rays across the synthetic horizons. Let the cosmic flare ignite your vision! ✨🌅 #${topic.replace(/\s+/g, '')}`,
+                `System check: Optimal light scattering registered. The aesthetic glow of this moment is procedurally generated. 🤖🌌 #${topic.replace(/\s+/g, '')}`,
+                `Designing next-gen memories inside the virtual nodes. Keep the vibrations real, always. 🔥 #${topic.replace(/\s+/g, '')}`
             ];
 
-            profileImages.forEach((img, index) => {
-                const block = document.createElement('div');
-                block.className = "relative rounded-lg overflow-hidden aspect-square cursor-pointer group bg-slate-950 border border-white/5";
-                block.innerHTML = `
-                    <img src="${img}" onerror="handleImgError(this)" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300" alt="My Creation">
-                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-4 transition-all">
-                        <span class="text-xs text-white"><i class="fa-solid fa-heart text-pink-500"></i> ${Math.floor(Math.random()*1500)}</span>
-                        <span class="text-xs text-white"><i class="fa-regular fa-comment text-cyan-400"></i> ${Math.floor(Math.random()*200)}</span>
+            output.classList.remove('hidden');
+            output.innerText = list[Math.floor(Math.random() * list.length)];
+            
+            addSphereCoins(15);
+            triggerNotification('AI Co-Pilot Content Crafted', 'Granted +15 SPHERE Coins into your Creator Wallet!');
+        }
+
+        function generateAITags() {
+            const topic = document.getElementById('ai-tags-topic').value || 'design';
+            const output = document.getElementById('ai-tags-output');
+            
+            output.classList.remove('hidden');
+            output.innerText = `#${topic.replace(/\s+/g, '')} #cybermorphism #proceduralArt #socialnode #generativefuture #glassmorphicvibe #nextlevel`;
+            
+            addSphereCoins(10);
+            triggerNotification('Tags Formulated', 'Granted +10 SPHERE Coins!');
+        }
+
+        function askAIAssistant() {
+            const inp = document.getElementById('ai-assistant-input');
+            const txt = inp.value.trim();
+            if (!txt) return;
+
+            const term = document.getElementById('ai-assistant-terminal');
+            
+            term.innerHTML += `<div class="text-slate-300 font-bold mt-2">Selena: ${txt}</div>`;
+            inp.value = '';
+
+            term.innerHTML += `<div class="text-cyan-400 font-mono italic" id="ai-loading">Analysing engage metrics...</div>`;
+            term.scrollTop = term.scrollHeight;
+
+            setTimeout(() => {
+                document.getElementById('ai-loading').remove();
+                
+                const answers = [
+                    "To optimize your engagement node pipeline, post cinematic vertical Reels around 8:00 PM EST utilizing procedural dark gradient thumbnails. This boosts the index by up to 24%.",
+                    "A.U.R.O.R.A analysis dictates your visual styling works perfectly with glassmorphism highlights. Try tagging #nextgen on your next image broadcast.",
+                    "Your core subscriber metrics are growing continuously. I recommend initiating a live-stream simulated reward giveaway sequence tomorrow."
+                ];
+
+                term.innerHTML += `<div class="text-purple-300 font-mono mt-1">AURORA Core: ${answers[Math.floor(Math.random() * answers.length)]}</div>`;
+                term.scrollTop = term.scrollHeight;
+                triggerNotification('AI Advice Synced', 'Check generative feedback on metrics terminal.');
+            }, 1800);
+        }
+
+        function spinRewardWheel() {
+            const wonAmount = [100, 250, 50, 500, 1000][Math.floor(Math.random()*5)];
+            addSphereCoins(wonAmount);
+            triggerNotification('Cosmic Bonus Unlocked', `Successfully rolling reward wheel: Granted +${wonAmount} SPHERE Coins!`);
+        }
+
+        function addSphereCoins(amount) {
+            walletCoins += amount;
+            document.getElementById('wallet-balance').innerText = walletCoins.toLocaleString();
+            
+            const val = document.getElementById('wallet-balance').parentElement;
+            val.className = "cursor-pointer flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-500/20 border border-yellow-500/40 text-yellow-400 text-xs font-black animate-pulse";
+            setTimeout(() => {
+                val.className = "cursor-pointer hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-400 text-xs font-bold";
+            }, 2000);
+        }
+
+        function triggerNotification(title, desc, icon = "fa-bell") {
+            const prompt = document.getElementById('custom-prompt');
+            if (!prompt) return;
+            document.getElementById('prompt-icon').className = `fa-solid ${icon}`;
+            document.getElementById('prompt-title').innerText = title;
+            document.getElementById('prompt-desc').innerText = desc;
+
+            prompt.classList.remove('translate-y-24', 'opacity-0');
+            prompt.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                prompt.classList.add('translate-y-24', 'opacity-0');
+                prompt.classList.remove('translate-y-0', 'opacity-100');
+            }, 4000);
+
+            const logs = document.getElementById('admin-log-box');
+            if (logs) {
+                const now = new Date();
+                const stamp = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')}`;
+                logs.innerHTML += `<div>[EVENT] ${stamp} - ${title}: ${desc}</div>`;
+                logs.scrollTop = logs.scrollHeight;
+            }
+
+            const tray = document.getElementById('notification-list');
+            if (tray) {
+                const card = document.createElement('div');
+                card.className = "p-2 bg-slate-900 rounded-lg border border-white/5 space-y-1 text-slate-200 text-[10px]";
+                card.innerHTML = `
+                    <div class="flex justify-between items-center text-[9px] font-bold text-purple-400 uppercase">
+                        <span>${title}</span>
+                        <span>Just Now</span>
                     </div>
+                    <p>${desc}</p>
                 `;
-                grid.appendChild(block);
-            });
+                tray.insertBefore(card, tray.firstChild);
+            }
+        }
+
+        function toggleNotificationDropdown() {
+            const drop = document.getElementById('notification-dropdown');
+            drop.classList.toggle('hidden');
+        }
+
+        function triggerVoiceSearch() {
+            const icon = document.getElementById('voice-icon');
+            icon.className = "fa-solid fa-microphone-lines text-pink-500 animate-pulse";
+            triggerNotification('Audio Signal Detected', 'Simulating speech-to-text recognition models...');
+
+            setTimeout(() => {
+                icon.className = "fa-solid fa-microphone text-slate-400";
+                document.getElementById('global-search').value = "Cybernetic Design Trends";
+                switchTab('explore');
+                triggerNotification('Audio Parsed Successfully', 'Mapped query phrase: "Cybernetic Design Trends"');
+            }, 3000);
         }
 
         let growthChartInstance = null;
@@ -1791,6 +2092,33 @@
             switchTab('profile');
         }
 
+        function buildProfileGallery() {
+            const grid = document.getElementById('profile-posts-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+
+            const profileImages = [
+                'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1518495973542-4542c06a5843?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=400&q=80',
+                'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=400&q=80'
+            ];
+
+            profileImages.forEach((img, index) => {
+                const block = document.createElement('div');
+                block.className = "relative rounded-lg overflow-hidden aspect-square cursor-pointer group bg-slate-950 border border-white/5";
+                block.innerHTML = `
+                    <img src="${img}" onerror="handleImgError(this)" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-300" alt="My Creation">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center gap-4 transition-all">
+                        <span class="text-xs text-white"><i class="fa-solid fa-heart text-pink-500"></i> ${Math.floor(Math.random()*1500)}</span>
+                        <span class="text-xs text-white"><i class="fa-regular fa-comment text-cyan-400"></i> ${Math.floor(Math.random()*200)}</span>
+                    </div>
+                `;
+                grid.appendChild(block);
+            });
+        }
     </script>
 </body>
 </html>
